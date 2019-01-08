@@ -21,7 +21,7 @@ class App extends Component {
     render(){
       return <div onMouseMove={this.onMouseMove}>
         <div className="panel"  style={this.state.styleOne} />
-        <div classname="panel"  style={this.state.styleTwo} />
+        <div className="panel"  style={this.state.styleTwo} />
       </div>  
     }
 }
