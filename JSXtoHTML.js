@@ -1,0 +1,5 @@
+/*
+This document has the purpose of comparing 
+JSX to actual HTML in order to better understand
+the differences and simmilarities of both.
+*/
