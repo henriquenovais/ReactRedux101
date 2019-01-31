@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import faker from "faker";
 //https://github.com/Marak/faker.js
 import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
 const App = () => {
   return (
     <div className="ui container comments">
@@ -24,6 +25,7 @@ const App = () => {
         avatar={faker.image.avatar()}
         text="What is your basis for such alegations? Terrible"
       />
+      <ApprovalCard />
     </div>
   );
 };
