@@ -1,14 +1,16 @@
 import React from "react";
 
-const ApprovalCard = () => {
+const ApprovalCard = props => {
+  /*
+    The ApprovalCard component receives information from the props(short for Properties) system in
+    React and since the information is inside the props variable(a JS variable) it is necessary the use
+    of {} to access this information in JSX.
+  */
+
   return (
     <div class="ui cards">
       <div class="card">
-        <div class="content">
-          <div class="description">
-            Elliot requested permission to view your contact details
-          </div>
-        </div>
+        <div class="content">{props.children}</div>
         <div class="extra content">
           <div class="ui two buttons">
             <div class="ui basic green button">Approve</div>
