@@ -25,21 +25,31 @@ import SeasonDisplay from "./SeasonDisplay";
    */
 
 class App extends React.Component {
-  //React always required the programmer to define a render method!!
-  render() {
-    // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
+  constructor(props) {
+    super(props);
+
+    //This is the ONLY situation in which setState is not used to change
+    //a component's state!
+    this.state = { lat: null }; //initialize object with null since the latittude is a number and its value has not been defined yet
+
     window.navigator.geolocation.getCurrentPosition(
       position => {
-        console.log(position);
+        //ALWAYS use setState to change a component's 'State'.
+        //The only exception to this is when initializing the component in its constructor!
+        this.setState({ lat: position.coords.latitude });
       },
       err => {
         console.log(err);
       }
     );
+  }
+  //React always required the programmer to define a render method!!
+  render() {
+    // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
 
     return (
       <div>
-        <h1>This is JSX baby</h1>
+        <div>{this.state.lat}</div>
         <SeasonDisplay />
       </div>
     );
@@ -47,3 +57,32 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.querySelector("#root"));
+
+/*
+This is a very important code. Because the 'position' function takes longer to process for the App,
+so if the dev wishes to store a value that comes from such function, the dev'll have to create
+a mechanism to wait for the response first.  
+
+const App = () => {
+  let teste;
+
+  window.navigator.geolocation.getCurrentPosition(
+    position => {
+      console.log(teste);
+      teste = position.coords.latitude;
+      console.log(teste);
+    },
+    err => {
+      console.log(err);
+    }
+  );
+
+  console.log(teste);
+
+  return (
+    <div>
+      <SeasonDisplay />
+    </div>
+  );
+};
+*/
