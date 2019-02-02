@@ -15,16 +15,35 @@ import SeasonDisplay from "./SeasonDisplay";
   --- this kind of component easier to handle user input --- and this kind of component can understand
   better life-cycle events. 
 
-
  */
+// Be careful not to confuse the State system with the Props system!
+/*
+  A 'State' is a JS Object that contains a set of data relevant to an specific component and updating
+  that set of data causes the component to rerender almost instantly.
+  The 'State' of a component must be initialized at its creation.
+  'State' can ONLY be updated by using 'setState'.
+   */
 
-const App = () => {
-  return (
-    <div>
-      <h1>This is JSX baby</h1>
-      <SeasonDisplay />
-    </div>
-  );
-};
+class App extends React.Component {
+  //React always required the programmer to define a render method!!
+  render() {
+    // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        console.log(position);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    return (
+      <div>
+        <h1>This is JSX baby</h1>
+        <SeasonDisplay />
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.querySelector("#root"));
