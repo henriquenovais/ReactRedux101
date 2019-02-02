@@ -30,7 +30,7 @@ class App extends React.Component {
 
     //This is the ONLY situation in which setState is not used to change
     //a component's state!
-    this.state = { lat: null }; //initialize object with null since the latittude is a number and its value has not been defined yet
+    this.state = { lat: null, errorMessage: "" }; //initialize object with null since the latittude is a number and its value has not been defined yet
 
     window.navigator.geolocation.getCurrentPosition(
       position => {
@@ -39,7 +39,7 @@ class App extends React.Component {
         this.setState({ lat: position.coords.latitude });
       },
       err => {
-        console.log(err);
+        this.setState({ errorMessage: err.message });
       }
     );
   }
@@ -49,7 +49,11 @@ class App extends React.Component {
 
     return (
       <div>
-        <div>{this.state.lat}</div>
+        <div>
+          Latitude: {this.state.lat}
+          <br />
+          Error: {this.state.errorMessage}
+        </div>
         <SeasonDisplay />
       </div>
     );
