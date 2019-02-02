@@ -47,16 +47,18 @@ class App extends React.Component {
   render() {
     // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
 
-    return (
-      <div>
-        <div>
-          Latitude: {this.state.lat}
-          <br />
-          Error: {this.state.errorMessage}
-        </div>
-        <SeasonDisplay />
-      </div>
-    );
+    if (this.state.lat && !this.state.errorMessage) {
+      return <div>Latitude: {this.state.lat}</div>;
+    }
+    if (!this.state.lat && this.state.errorMessage) {
+      return <div>Error: {this.state.errorMessage}</div>;
+    }
+    /* Could do this too:
+    if (!this.state.lat && !this.state.errorMessage) {
+      return <div>LOADING BOYZ, BE CALM</div>;
+    }
+    */
+    return <div>LOADING BOYZ, BE CALM</div>;
   }
 }
 
