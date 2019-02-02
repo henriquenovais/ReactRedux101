@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import SeasonDisplay from "./SeasonDisplay";
 
 /*
   Class based components VS Function based components
@@ -43,6 +42,35 @@ class App extends React.Component {
       }
     );
   }
+  /*
+  COMMENTARY ABOUT LIFE CYCLE FUNCTIONS:
+
+  'componentDidMount()' is part of the life cycle functionalities of React. This method is 
+  executed ONCE, one and only one time, after the system detects that the component has been
+  properly mounted!
+
+
+  componentDidMount() {
+    console.log(
+      "This method executes once after the React detects that the component mounted!"
+    );
+  }
+
+  'componentDidUpdate()' is part of the life cycle functionalities of React, just like 
+  'componentDidMount()'. This method may be executed multiple times, it will be executed
+  once for every time the component rerenders!
+
+  DISCLAIMER: The 'render()' method will always be called before 'componentDidUpdate()'
+  since that is required in order to rerender the component.
+
+  componentDidUpdate() {
+    console.log(
+      "This method executes once after the React detects that the component was rerendered!"
+    );
+  }
+
+  */
+
   //React always required the programmer to define a render method!!
   render() {
     // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
