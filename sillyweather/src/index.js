@@ -30,7 +30,53 @@ class App extends React.Component {
     //This is the ONLY situation in which setState is not used to change
     //a component's state!
     this.state = { lat: null, errorMessage: "" }; //initialize object with null since the latittude is a number and its value has not been defined yet
+  }
+  /*
+  COMMENTARY ABOUT LIFE CYCLE FUNCTIONS:
 
+  'componentDidMount()' is part of the life cycle functionalities of React. This method is 
+  executed ONCE, one and only one time, after the system detects that the component has been
+  properly mounted!'componentDidMount()' is THE PLACE to do data loading for you application as
+  it is one of the best practices recommended by the React community.
+  
+  OBS: Data loading can be done at the constructor as well but it is best to keep it in 'componentDidMount()'
+  so the code can be more organized.
+
+  componentDidMount() {
+    console.log(
+      "This method executes once after the React detects that the component mounted!"
+    );
+  }
+
+  'componentDidUpdate()' is part of the life cycle functionalities of React, just like 
+  'componentDidMount()'. This method may be executed multiple times, it will be executed
+  once for every time the component rerenders! 'componentDidUpdate()' is the method used
+  for continuous data loading, data loading that needs to be redone everytime the component updates.
+
+  DISCLAIMER: The 'render()' method will always be called before 'componentDidUpdate()'
+  since that is required in order to rerender the component.
+
+  componentDidUpdate() {
+    console.log(
+      "This method executes once after the React detects that the component was rerendered!"
+    );
+  }
+
+  'componentWillUnmount()' is a method commonly used for cleaning up the interface.
+
+  componentWillUnmount(){
+    console.log("No component no more boy");
+  }
+
+  Other rarely used lifecycle functions:
+
+  'shouldComponentUpdate()'
+  'getDerivedStateFromProps()'
+  'getSnapshotBeforeUpdate()'
+  */
+
+  componentDidMount() {
+    // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
     window.navigator.geolocation.getCurrentPosition(
       position => {
         //ALWAYS use setState to change a component's 'State'.
@@ -42,39 +88,10 @@ class App extends React.Component {
       }
     );
   }
-  /*
-  COMMENTARY ABOUT LIFE CYCLE FUNCTIONS:
-
-  'componentDidMount()' is part of the life cycle functionalities of React. This method is 
-  executed ONCE, one and only one time, after the system detects that the component has been
-  properly mounted!
-
-
-  componentDidMount() {
-    console.log(
-      "This method executes once after the React detects that the component mounted!"
-    );
-  }
-
-  'componentDidUpdate()' is part of the life cycle functionalities of React, just like 
-  'componentDidMount()'. This method may be executed multiple times, it will be executed
-  once for every time the component rerenders!
-
-  DISCLAIMER: The 'render()' method will always be called before 'componentDidUpdate()'
-  since that is required in order to rerender the component.
-
-  componentDidUpdate() {
-    console.log(
-      "This method executes once after the React detects that the component was rerendered!"
-    );
-  }
-
-  */
 
   //React always required the programmer to define a render method!!
+  //Since the render method is used A LOT it is very important to use it only to convert JSX into HTML
   render() {
-    // To understand more about the geolocation api visit: https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation
-
     if (this.state.lat && !this.state.errorMessage) {
       return <div>Latitude: {this.state.lat}</div>;
     }
