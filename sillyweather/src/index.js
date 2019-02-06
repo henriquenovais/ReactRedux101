@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
 
 /*
   Class based components VS Function based components
@@ -22,8 +23,11 @@ import ReactDOM from "react-dom";
   The 'State' of a component must be initialized at its creation.
   'State' can ONLY be updated by using 'setState'.
    */
+/**/
 
 class App extends React.Component {
+  state = { lat: null, errorMessage: "" }; //This is the same as doing a constructor because of the Babel's conversion of JS
+  /*
   constructor(props) {
     super(props);
 
@@ -31,6 +35,8 @@ class App extends React.Component {
     //a component's state!
     this.state = { lat: null, errorMessage: "" }; //initialize object with null since the latittude is a number and its value has not been defined yet
   }
+  */
+
   /*
   COMMENTARY ABOUT LIFE CYCLE FUNCTIONS:
 
@@ -93,7 +99,7 @@ class App extends React.Component {
   //Since the render method is used A LOT it is very important to use it only to convert JSX into HTML
   render() {
     if (this.state.lat && !this.state.errorMessage) {
-      return <div>Latitude: {this.state.lat}</div>;
+      return <SeasonDisplay lat={this.state.lat} />;
     }
     if (!this.state.lat && this.state.errorMessage) {
       return <div>Error: {this.state.errorMessage}</div>;
