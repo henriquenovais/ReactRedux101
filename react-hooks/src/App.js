@@ -1,7 +1,6 @@
-import logo from './logo.svg';
+import React from 'react';
 
-
-function App() {
+export default () => {
   return (
     <div>
 	<h1>react hooks practice</h1>
@@ -9,4 +8,3 @@ function App() {
   );
 }
 
-export default App;
