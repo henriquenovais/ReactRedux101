@@ -19,7 +19,6 @@ const items = [
 export default () => {
   return (
     <div>
-	    <h1>react hooks practice</h1>
       <Accordion items={items}/>
     </div>
   );
