@@ -21,6 +21,8 @@ export default () => {
   return (
     <div>
       <Accordion items={items}/>
+      <button></button>
+      <button></button>
     </div>
   );
 }
