@@ -1,3 +1,27 @@
-div {
+.background {
     background-image: url('./assets/avatar.jpg');
+    width: 100vw;
+    height: 90vh;
 }
+
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 1vw 1vh; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+  }
+
+  .button-group {
+    display: inline-block;
+    width: 100vw;
+    justify-content: space-evenly;
+  }
+  
+  /* Add a background color on hover */
+  .button-group button:hover {
+    background-color: #3e8e41;
+    border: 1px solid green; /* Green border */
+    padding: 1vw 1vh; /* Some padding */
+  }

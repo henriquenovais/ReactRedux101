@@ -20,12 +20,17 @@ const items = [
 export default () => {
   return (
     <div>
-      <Accordion items={items}/>]
-      <button type="button">CodeGeass</button> 
-      <button type="button">Naruto</button> 
-      <button type="button">Fullmetal</button> 
-      <button type="button">Avatar</button> 
+      <div className="background">
+      </div>
+      <div className="button-group">
+        <button type="button">CodeGeass</button> 
+        <button type="button">Naruto</button> 
+        <button type="button">Fullmetal</button> 
+        <button type="button">Avatar</button> 
+      </div>
     </div>
+
+
   );
 }
 
