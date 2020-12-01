@@ -4,7 +4,7 @@
     height: 90vh;
 }
 
-.btn-group button {
+.button-group button {
     background-color: #4CAF50; /* Green background */
     border: 1px solid green; /* Green border */
     color: white; /* White text */
@@ -14,9 +14,10 @@
   }
 
   .button-group {
-    display: inline-block;
+    display: flex;
     width: 100vw;
     justify-content: space-evenly;
+    text-align: center;
   }
   
   /* Add a background color on hover */
