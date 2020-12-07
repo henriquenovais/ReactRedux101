@@ -1,13 +1,10 @@
 import React from 'react';
 
-const ChangeBackground = () => {
+const ChangeBackground = (props) => {
 
     return (
-    <div className="button-group">
-        <button type="button">CodeGeass</button> 
-        <button type="button">Naruto</button> 
-        <button type="button">Fullmetal</button> 
-        <button type="button">Avatar</button> 
+    <div >
+        <button type="button" className={props.className}>{props.titleName}</button> 
     </div>
     );
 }
