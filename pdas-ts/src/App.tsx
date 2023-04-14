@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ProfileCard from "./ProfileCard";
-import AlexaImage from "./images/alexa";
+import AlexaImage from "./images/alexa.png";
 
 console.log(AlexaImage);
 
