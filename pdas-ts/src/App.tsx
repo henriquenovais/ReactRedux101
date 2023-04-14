@@ -1,26 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import ProfileCard from "./ProfileCard";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>This is the PDAS app</h1>
+      <ProfileCard title="cortana" handle="@cortana22" />
+      <ProfileCard title="siri" handle="@siri01" />
+      <ProfileCard title="siri" handle="@siri01" />
     </div>
   );
-}
+};
 
 export default App;
