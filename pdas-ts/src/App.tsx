@@ -25,6 +25,7 @@ const App: FC = () => {
                 handle="@cortana22"
                 img={CortanaImage}
                 imgAlt="cortana profile img"
+                description="Cortana is the digital assistant from Microsoft, the company founded by Bill Gates."
               />
             </div>
 
@@ -34,6 +35,7 @@ const App: FC = () => {
                 handle="@siri01"
                 img={SiriImage}
                 imgAlt="siri profile img"
+                description="Siri is the digital assistant from Apple, the company that was reinvented by Steve Jobs."
               />
             </div>
 
@@ -43,6 +45,7 @@ const App: FC = () => {
                 handle="@alexa99"
                 img={AlexaImage}
                 imgAlt="alexa profile img"
+                description="Alexa is a digital assistant from Amazon, the company founded by Jeff Besos"
               />
             </div>
           </div>

@@ -5,9 +5,16 @@ interface IProfileCard {
   handle: string;
   img: string;
   imgAlt: string;
+  description: string;
 }
 
-const ProfileCard: FC<IProfileCard> = ({ title, handle, img, imgAlt }) => {
+const ProfileCard: FC<IProfileCard> = ({
+  title,
+  handle,
+  img,
+  imgAlt,
+  description,
+}) => {
   return (
     <div className="card">
       <div className="card-image">
@@ -21,6 +28,7 @@ const ProfileCard: FC<IProfileCard> = ({ title, handle, img, imgAlt }) => {
           <p className="title is-4">{title}</p>
           <p className="subtitle is-6">{handle}</p>
         </div>
+        <div className="content">{description}</div>
       </div>
     </div>
   );
