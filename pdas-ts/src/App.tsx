@@ -9,7 +9,12 @@ import SiriImage from "./images/siri.png";
 const App: FC = () => {
   return (
     <div>
-      <h1>This is the PDAS app</h1>
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">This is the PDAS app</p>
+          <p className="subtitle"></p>
+        </div>
+      </section>
 
       <div className="container">
         <section className="section">
