@@ -1,16 +1,26 @@
 import { FC, useState } from "react";
+import AnimalShow from "./AnimalShow";
 
 const App: FC = () => {
-  const [animalCount, setAnimalCount] = useState<number>(0);
+  const [animals, setAnimals] = useState<string[]>([]);
+
+  const generateAnimal = (): string => {
+    const animalList = ["cat", "bird", "cow", "dog", "gator", "horse"];
+
+    return animalList[Math.floor(Math.random() * animalList.length)];
+  };
+  const onClick = () => {
+    setAnimals([...animals, generateAnimal()]);
+  };
 
   return (
     <div>
       <div>
-        <button onClick={() => setAnimalCount((before) => before + 1)}>
-          Add animal
-        </button>
+        <button onClick={onClick}>Add animal</button>
       </div>
-      <div>{animalCount}</div>
+      {animals.map(() => (
+        <AnimalShow />
+      ))}
     </div>
   );
 };
