@@ -18,8 +18,8 @@ const App: FC = () => {
       <div>
         <button onClick={onClick}>Add animal</button>
       </div>
-      {animals.map(() => (
-        <AnimalShow />
+      {animals.map((animal) => (
+        <AnimalShow type={animal} />
       ))}
     </div>
   );

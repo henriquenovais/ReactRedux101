@@ -1,7 +1,11 @@
 import { FC } from "react";
 
-const AnimalShow: FC = () => {
-  return <h1>AnimalShow</h1>;
+interface IAnimalShow {
+  type: string;
+}
+
+const AnimalShow: FC<IAnimalShow> = ({ type }) => {
+  return <h1>{type}</h1>;
 };
 
 export default AnimalShow;
