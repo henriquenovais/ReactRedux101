@@ -1,4 +1,6 @@
 import { FC, useState } from "react";
+import "./App.css";
+
 import AnimalShow from "./AnimalShow";
 
 const App: FC = () => {
