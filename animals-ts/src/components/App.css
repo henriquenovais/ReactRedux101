@@ -1,0 +1,18 @@
+.app-container {
+  width: -webkit-fil-available;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgreen;
+}
+
+button {
+  background-color: green;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  box-shadow: 2px rgba(120, 120, 120, 0.5);
+
+  margin-bottom: 15px;
+}
