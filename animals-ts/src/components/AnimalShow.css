@@ -4,9 +4,9 @@
 }
 
 .heart {
-  position: relative;
-  top: 0;
-  bottom: 0;
+  position: absolute;
+  top: 100;
+  left: 50;
 }
 
 .svg-container svg {

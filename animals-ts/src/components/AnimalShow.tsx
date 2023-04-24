@@ -43,9 +43,11 @@ const AnimalShow: FC<IAnimalShow> = ({ type }) => {
   return (
     <div className="container" onClick={handleClick}>
       <div className="svg-container">
+        <div className="heart">
+          <HeartSvg style={{ width: heartSize + "px" }} />
+        </div>
         <svg viewBox="0 0 600 600">{selectAnimal(type)}</svg>
       </div>
-      <HeartSvg style={{ width: heartSize + "px" }} />
     </div>
   );
 };
