@@ -15,6 +15,10 @@ interface IAnimalShow {
 const AnimalShow: FC<IAnimalShow> = ({ type }) => {
   const [heartSize, setHeartSize] = useState<number>(10);
 
+  const handleClick = (): void => {
+    setHeartSize(heartSize + 10);
+  };
+
   const selectAnimal = (type: string): JSX.Element | undefined => {
     switch (type) {
       case "cat":
@@ -34,10 +38,14 @@ const AnimalShow: FC<IAnimalShow> = ({ type }) => {
     }
   };
 
+  console.log("animal type >>>>>>>>>>>>", type);
+
   return (
-    <div className="container">
-      <h1>{selectAnimal(type)}</h1>
-      <HeartSvg className="heart" />
+    <div className="container" onClick={handleClick}>
+      <div className="svg-container">
+        <svg viewBox="0 0 600 600">{selectAnimal(type)}</svg>
+      </div>
+      <HeartSvg style={{ width: heartSize + "px" }} />
     </div>
   );
 };

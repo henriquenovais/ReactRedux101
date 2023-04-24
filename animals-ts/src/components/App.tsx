@@ -20,8 +20,8 @@ const App: FC = () => {
       <div>
         <button onClick={onClick}>Add animal</button>
       </div>
-      {animals.map((animal) => (
-        <AnimalShow type={animal} />
+      {animals.map((animal, index) => (
+        <AnimalShow key={index} type={animal} />
       ))}
     </div>
   );
