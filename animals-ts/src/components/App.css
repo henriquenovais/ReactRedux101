@@ -6,6 +6,15 @@
   align-items: center;
 }
 
+.animal-list {
+  width: -webkit-fil-available;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 body {
   margin: 0;
   padding: 0;

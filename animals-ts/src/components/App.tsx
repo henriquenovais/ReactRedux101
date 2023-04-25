@@ -18,9 +18,11 @@ const App: FC = () => {
   return (
     <div className="app-container">
       <button onClick={onClick}>Add animal</button>
-      {animals.map((animal, index) => (
-        <AnimalShow key={index} type={animal} />
-      ))}
+      <div className="animal-list">
+        {animals.map((animal, index) => (
+          <AnimalShow key={index} type={animal} />
+        ))}
+      </div>
     </div>
   );
 };
