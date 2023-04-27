@@ -11,7 +11,9 @@ const App: FC = () => {
 
     return animalList[Math.floor(Math.random() * animalList.length)];
   };
-  const onClick = () => {
+  const onClick = (e: React.BaseSyntheticEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setAnimals([...animals, generateAnimal()]);
   };
 

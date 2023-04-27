@@ -15,7 +15,9 @@ interface IAnimalShow {
 const AnimalShow: FC<IAnimalShow> = ({ type }) => {
   const [heartSize, setHeartSize] = useState<number>(10);
 
-  const handleClick = (): void => {
+  const handleClick = (e: React.BaseSyntheticEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
     setHeartSize(heartSize + 10);
   };
 
@@ -37,8 +39,6 @@ const AnimalShow: FC<IAnimalShow> = ({ type }) => {
         return undefined;
     }
   };
-
-  console.log("animal type >>>>>>>>>>>>", type);
 
   return (
     <div className="container" onClick={handleClick}>
