@@ -16,7 +16,7 @@ interface IAxiosConfig {
   ): Promise<AxiosResponse | null>;
 }
 
-class AxiosConfig implements IAxiosConfig {
+export class AxiosConfig implements IAxiosConfig {
   axiosGet = async (
     url: string,
     headers: AxiosHeaders,
