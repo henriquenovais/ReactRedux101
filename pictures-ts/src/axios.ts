@@ -2,10 +2,12 @@ import axios, { AxiosHeaders, AxiosResponse } from "axios";
 
 interface IAxiosConfig {
   /**
-   * Some description
+   * Does a HTTP GET request using Axios
    *
-   *  @param {string} some param used to do a request
-   *  @returns {Promise<boolean>} returns true if request was successful
+   *  @param {string} url - url to be used in the request
+   *  @param {AxiosHeaders} headers - headers of the request
+   *  @param {Object} query - request query params
+   *  @returns {Promise<AxiosResponse | null>} request response
    */
   axiosGet(
     url: string,
