@@ -11,7 +11,7 @@ interface IAxiosConfig {
     url: string,
     headers: AxiosHeaders,
     query: Object
-  ): Promise<AxiosResponse>;
+  ): Promise<AxiosResponse | null>;
 }
 
 class AxiosConfig implements IAxiosConfig {
@@ -19,7 +19,7 @@ class AxiosConfig implements IAxiosConfig {
     url: string,
     headers: AxiosHeaders,
     query: Object
-  ): Promise<AxiosResponse> => {
+  ): Promise<AxiosResponse | null> => {
     try {
       const response = await axios.get(url, {
         headers,
@@ -30,7 +30,8 @@ class AxiosConfig implements IAxiosConfig {
 
       return response;
     } catch (error) {
-      return;
+      console.log(`Axios GET request error: ${error}`);
+      return null;
     }
   };
 }
