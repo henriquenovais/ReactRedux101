@@ -1,41 +1,68 @@
-import axios, { AxiosHeaders, AxiosResponse } from "axios";
+import axios, { AxiosInstance, AxiosResponse, Method } from "axios";
 
-interface IAxiosConfig {
-  /**
-   * Does a HTTP GET request using Axios
-   *
-   *  @param {string} url - url to be used in the request
-   *  @param {AxiosHeaders} headers - headers of the request
-   *  @param {Object} query - request query params
-   *  @returns {Promise<AxiosResponse | null>} request response
-   */
-  axiosGet(
-    url: string,
-    headers: AxiosHeaders,
-    query: Object
-  ): Promise<AxiosResponse | null>;
+interface IRequestHeader {
+  authorization_action?: string;
+  authorization?: string;
 }
 
-export class AxiosConfig implements IAxiosConfig {
-  axiosGet = async (
-    url: string,
-    headers: AxiosHeaders,
-    query: Object
-  ): Promise<AxiosResponse | null> => {
-    try {
-      const response = await axios.get(url, {
-        headers,
-        params: {
-          query,
-        },
-      });
+export abstract class HTTPClient {
+  protected http: AxiosInstance;
 
-      return response;
-    } catch (error) {
-      console.log(`Axios GET request error: ${error}`);
-      return null;
-    }
+  constructor(baseURL: string) {
+    this.http = axios.create({
+      baseURL,
+    });
+  }
+
+  private baseRequest = <T, R>(
+    method: Method,
+    url: string,
+    data?: T,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.http.request({
+      data,
+      headers: { ...headers },
+      method,
+      url,
+    });
+  };
+
+  protected delete = <R>(
+    url: string,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.baseRequest<undefined, R>("DELETE", url, undefined, headers);
+  };
+
+  protected get = <R>(
+    url: string,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.baseRequest<undefined, R>("GET", url, undefined, headers);
+  };
+
+  protected patch = <T, R>(
+    url: string,
+    data: T,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.baseRequest<T, R>("PATCH", url, data, headers);
+  };
+
+  protected post = <T, R>(
+    url: string,
+    data: T,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.baseRequest<T, R>("POST", url, data, headers);
+  };
+
+  protected put = <T, R>(
+    url: string,
+    data: T,
+    headers?: IRequestHeader
+  ): Promise<AxiosResponse<R>> => {
+    return this.baseRequest<T, R>("PUT", url, data, headers);
   };
 }
-
-export const useAxiosConfig = () => new AxiosConfig();
