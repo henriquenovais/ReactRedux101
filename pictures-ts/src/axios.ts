@@ -1,8 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse, Method } from "axios";
 
 interface IRequestHeader {
-  authorization_action?: string;
-  authorization?: string;
+  Authorization?: string;
 }
 
 export abstract class HTTPClient {
