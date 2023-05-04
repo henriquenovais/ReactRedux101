@@ -1,7 +1,18 @@
 import { FC } from "react";
+import ImageCard from "./ImageCard";
 
-const ImageList: FC = () => {
-  return <h1>ImageList</h1>;
+interface IImageList {
+  arrUrl: Array<string>;
+}
+
+const ImageList: FC<IImageList> = ({ arrUrl }) => {
+  return (
+    <div>
+      {arrUrl.map((value, index) => (
+        <ImageCard key={index} url={value} />
+      ))}
+    </div>
+  );
 };
 
 export default ImageList;

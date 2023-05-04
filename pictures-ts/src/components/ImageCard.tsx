@@ -1,7 +1,15 @@
 import { FC } from "react";
 
-const ImageCard: FC = () => {
-  return <h1>ImageCard</h1>;
+interface IImageCard {
+  url: string;
+}
+
+const ImageCard: FC<IImageCard> = ({ url }) => {
+  return (
+    <span>
+      <img src={url} alt="searched" width="400" />
+    </span>
+  );
 };
 
 export default ImageCard;

@@ -1,23 +1,40 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import unsplashService from "./services/unsplash";
+import SearchBar from "./components/SearchBar";
+import ImageList from "./components/ImageList";
 
 const App: FC = () => {
-  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+  const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
+  const [searchResults, setSearchResults] = useState<Array<string> | undefined>(
+    undefined
+  );
 
-  unsplashService.getImage("cars").then((result) => {
-    console.log("result >>>>>>>>>", result);
-    console.log(
-      "result[0].links.html >>>>>>>>>>",
-      result.results[0].links.html
-    );
-    setImageUrl(result.results[0].links.download);
-  });
+  useEffect(() => {
+    const getSearchResults = async () => {
+      if (searchTerm) {
+        const { results } = await unsplashService.getImage(searchTerm);
+        const urlList: Array<string> = results.map(
+          (resultObj: any) => resultObj.links.download
+        );
+
+        setSearchResults(urlList);
+      }
+    };
+
+    getSearchResults();
+  }, [searchTerm]);
 
   return (
-    <h1>
-      App
-      {imageUrl && <img src={imageUrl} alt="cool" width={500} />}
-    </h1>
+    <div>
+      <div>
+        <h1>App </h1>
+      </div>
+      <div>
+        {/* {imageUrl && <img src={imageUrl} alt="cool" width={500} />} */}
+        <SearchBar handleSubmit={setSearchTerm} />
+      </div>
+      {searchResults && <ImageList arrUrl={searchResults} />}
+    </div>
   );
 };
 
