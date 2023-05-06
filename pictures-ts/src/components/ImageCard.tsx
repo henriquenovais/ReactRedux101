@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "./ImageCard.css";
 
 interface IImageCard {
   url: string;

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import ImageCard from "./ImageCard";
+import "./ImageList.css";
 
 interface IImageList {
   arrUrl: Array<string>;

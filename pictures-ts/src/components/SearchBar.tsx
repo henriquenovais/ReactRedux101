@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
 import { BaseSyntheticEvent, FC, useState } from "react";
+import "./SearchBar.css";
 
 interface ISearchBar {
   handleSubmit: (term: string) => void;
