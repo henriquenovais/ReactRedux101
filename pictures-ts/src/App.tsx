@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import unsplashService from "./services/unsplash";
 import SearchBar from "./components/SearchBar";
 import ImageList from "./components/ImageList";
+import "./App.css";
 
 const App: FC = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);

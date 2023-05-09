@@ -7,9 +7,17 @@
   font-size: 28px;
 }
 
-.container {
-  width: -webkit-fill-available;
+.container form {
+  width: 100%;
   display: flex;
+  flex-direction: row;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
 
   border: 4px solid navy;

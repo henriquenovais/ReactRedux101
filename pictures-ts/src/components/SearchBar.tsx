@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, MouseEvent } from "react";
 import { BaseSyntheticEvent, FC, useState } from "react";
 import "./SearchBar.css";
 
@@ -16,7 +16,9 @@ const SearchBar: FC<ISearchBar> = ({ handleSubmit }) => {
     setSearchTerm(event.target.value);
   };
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>): void => {
+  const onSubmit = (
+    event: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>
+  ): void => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -31,6 +33,7 @@ const SearchBar: FC<ISearchBar> = ({ handleSubmit }) => {
           value={searchTerm}
           onChange={handleChange}
         />
+        <button onClick={onSubmit}>Search Image</button>
       </form>
     </div>
   );
