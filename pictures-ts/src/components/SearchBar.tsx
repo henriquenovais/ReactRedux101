@@ -24,9 +24,13 @@ const SearchBar: FC<ISearchBar> = ({ handleSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onSubmit}>
-        <input value={searchTerm} onChange={handleChange}></input>
+        <input
+          className="search-bar"
+          value={searchTerm}
+          onChange={handleChange}
+        />
       </form>
     </div>
   );

@@ -27,9 +27,6 @@ const App: FC = () => {
   return (
     <div>
       <div>
-        <h1>App </h1>
-      </div>
-      <div>
         {/* {imageUrl && <img src={imageUrl} alt="cool" width={500} />} */}
         <SearchBar handleSubmit={setSearchTerm} />
       </div>
