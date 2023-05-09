@@ -33,7 +33,9 @@ const SearchBar: FC<ISearchBar> = ({ handleSubmit }) => {
           value={searchTerm}
           onChange={handleChange}
         />
-        <button onClick={onSubmit}>Search Image</button>
+        <button className="search-button" onClick={onSubmit}>
+          Search
+        </button>
       </form>
     </div>
   );

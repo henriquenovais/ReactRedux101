@@ -15,7 +15,7 @@ const App: FC = () => {
       if (searchTerm) {
         const { results } = await unsplashService.getImage(searchTerm);
         const urlList: Array<string> = results.map(
-          (resultObj: any) => resultObj.links.download
+          (resultObj: any) => resultObj.urls.small
         );
 
         setSearchResults(urlList);
@@ -27,6 +27,7 @@ const App: FC = () => {
 
   return (
     <div>
+      <h1>Search For An Image</h1>
       <div>
         {/* {imageUrl && <img src={imageUrl} alt="cool" width={500} />} */}
         <SearchBar handleSubmit={setSearchTerm} />
