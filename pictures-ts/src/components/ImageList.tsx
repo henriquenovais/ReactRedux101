@@ -8,7 +8,7 @@ interface IImageList {
 
 const ImageList: FC<IImageList> = ({ arrUrl }) => {
   return (
-    <div>
+    <div className="card-list">
       {arrUrl.map((value, index) => (
         <ImageCard key={index} url={value} />
       ))}
