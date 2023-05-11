@@ -8,7 +8,7 @@ interface IImageCard {
 const ImageCard: FC<IImageCard> = ({ url }) => {
   return (
     <div className="card">
-      <img src={url} alt="searched" width="400" />
+      <img src={url} alt="searched" height="200" />
     </div>
   );
 };
