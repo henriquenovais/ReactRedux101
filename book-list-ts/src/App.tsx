@@ -1,11 +1,14 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "./App.css";
 import CreateBook from "./components/CreateBook";
+import { Book } from "./types";
 
 const App: FC = () => {
+  const [books, setBooks] = useState<Array<Book>>([]);
+
   return (
     <div>
-      <CreateBook />
+      <CreateBook handleSubmit={setBooks} />
     </div>
   );
 };
