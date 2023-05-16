@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./BookCard.css";
+import "../App.css";
 
 const BookCard: FC = () => {
   return <div>BookCard</div>;

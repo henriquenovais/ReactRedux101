@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./BookEdit.css";
+import "../App.css";
 
 const BookEdit: FC = () => {
   return <div>BookEdit</div>;
