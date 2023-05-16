@@ -1,7 +1,8 @@
 import { FC } from "react";
+import "./BookCard.css";
 
 const BookCard: FC = () => {
-  return <div>BookEdit</div>;
+  return <div>BookCard</div>;
 };
 
 export default BookCard;
