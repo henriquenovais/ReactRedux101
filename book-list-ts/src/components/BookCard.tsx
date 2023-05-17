@@ -9,8 +9,7 @@ export interface IBookCard {
 const BookCard: FC<IBookCard> = ({ book }) => {
   return (
     <div>
-      <div></div>
-      <div></div>
+      <h3>{book.title}</h3>
     </div>
   );
 };
