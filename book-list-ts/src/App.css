@@ -10,9 +10,7 @@ body {
   padding: 0;
 }
 
-.create-book.form {
-  display: flex;
-  flex-direction: row;
+.create-book.form form {
   width: 100%;
 
   padding: 14px;
