@@ -15,10 +15,14 @@ const App: FC = () => {
 
   return (
     <div>
-      <CreateBook onSubmit={insertBook} />
-      {books.map((book) => (
-        <BookCard book={book} />
-      ))}
+      <div>
+        <CreateBook onSubmit={insertBook} />
+      </div>
+      <div className="app books-container">
+        {books.map((book) => (
+          <BookCard book={book} />
+        ))}
+      </div>
     </div>
   );
 };
