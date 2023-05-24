@@ -6,9 +6,10 @@ import BookEdit from "./BookEdit";
 export interface IBookCard {
   book: Book;
   deleteBook: (id: string) => void;
+  editBook: (id: string, newTitle: string) => void;
 }
 
-const BookCard: FC<IBookCard> = ({ book, deleteBook }) => {
+const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
   const [enableEditMode, setEnableEditMode] = useState<boolean>(false);
 
   const handleEditClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -25,6 +26,11 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook }) => {
     deleteBook(book.id);
   };
 
+  const handleEditSave = (id: string, newTitle: string) => {
+    editBook(id, newTitle);
+    setEnableEditMode(false);
+  };
+
   return (
     <div className="book-card card">
       <div className="book-card button-row">
@@ -37,12 +43,7 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook }) => {
       </div>
       <div className="book-card content">
         {enableEditMode ? (
-          <BookEdit
-            currentTitle={book.title}
-            onSave={() => {
-              setEnableEditMode(false);
-            }}
-          />
+          <BookEdit book={book} onSave={handleEditSave} />
         ) : (
           book.title
         )}

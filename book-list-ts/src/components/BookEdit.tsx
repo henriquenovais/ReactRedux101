@@ -1,13 +1,14 @@
 import { ChangeEvent, FC, FormEvent, useState, MouseEvent } from "react";
 import "../App.css";
+import { Book } from "../types";
 
 interface IBookEdit {
-  onSave: (title: string) => void;
-  currentTitle: string;
+  onSave: (id: string, title: string) => void;
+  book: Book;
 }
 
-const BookEdit: FC<IBookEdit> = ({ onSave, currentTitle }) => {
-  const [newTitle, setNewTitle] = useState(currentTitle);
+const BookEdit: FC<IBookEdit> = ({ onSave, book }) => {
+  const [newTitle, setNewTitle] = useState(book.title);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -22,7 +23,7 @@ const BookEdit: FC<IBookEdit> = ({ onSave, currentTitle }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    onSave(newTitle);
+    onSave(book.id, newTitle);
   };
 
   return (
