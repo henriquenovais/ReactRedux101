@@ -19,6 +19,8 @@ const CreateBook: FC<ICreateBook> = ({ onSubmit }) => {
     };
 
     onSubmit(newBook);
+
+    setNewTitle("");
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

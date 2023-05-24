@@ -13,6 +13,18 @@ const App: FC = () => {
     setBooks(updatedBooks);
   };
 
+  const deleteBook = (id: string) => {
+    let newBooks = [];
+
+    for (const book of books) {
+      if (book.id !== id) {
+        newBooks.push(book);
+      }
+    }
+
+    setBooks(newBooks);
+  };
+
   return (
     <div>
       <div>
@@ -20,7 +32,7 @@ const App: FC = () => {
       </div>
       <div className="app books-container">
         {books.map((book) => (
-          <BookCard book={book} />
+          <BookCard book={book} deleteBook={deleteBook} />
         ))}
       </div>
     </div>
