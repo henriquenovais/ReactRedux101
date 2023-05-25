@@ -42,7 +42,7 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
         </button>
       </div>
       <div className="book-card content">
-        <img alt="book" src={`https://picsum.photos/seed/${book.id}/200/300`} />
+        <img alt="book" src={`https://picsum.photos/seed/${book.id}/246/300`} />
         {enableEditMode ? (
           <BookEdit book={book} onSave={handleEditSave} />
         ) : (

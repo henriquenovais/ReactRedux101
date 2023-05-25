@@ -59,6 +59,11 @@ body,
   margin: 10px 10px 10px 10px;
 
   width: 246px;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.book-card.content img {
   border-radius: 10px;
 }
 
