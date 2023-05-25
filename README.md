@@ -6,7 +6,14 @@ The content hereby presented was taught to me by Professor Stephen Grider throug
 
 <a href="https://www.udemy.com/react-redux/" target="_blank"> Professor Stephen Grider's course at Udemy </a>
 
+## Cheat Sheets
+
 [JSX Cheat Sheet](https://jsx-notes.vercel.app/)
 [State Updates Cheat Sheet](https://state-updates.vercel.app/)
+
+## Interesting Links
+
+[Lorem Picsum](https://picsum.photos/)
+[Unsplash API](https://api.unsplash.com/)
 
 Good learning!
