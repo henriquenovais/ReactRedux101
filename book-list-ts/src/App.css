@@ -67,6 +67,11 @@ body,
   border-radius: 10px;
 }
 
+.book-card.title {
+  word-break: break-all;
+  text-align: center;
+}
+
 .book-card.button-row {
   display: inline-flex;
   justify-content: flex-end;

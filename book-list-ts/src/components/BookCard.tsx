@@ -46,7 +46,7 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
         {enableEditMode ? (
           <BookEdit book={book} onSave={handleEditSave} />
         ) : (
-          book.title
+          <span className="book-card title">{book.title}</span>
         )}
       </div>
     </div>
