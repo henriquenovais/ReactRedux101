@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
-import { BookContext } from "../contexts/BooksContext";
+import BookContext from "../contexts/BooksContext";
 
 const CreateBook: FC = () => {
   const bookContext = useContext(BookContext);

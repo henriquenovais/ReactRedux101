@@ -2,7 +2,7 @@ import { FC, MouseEvent, useContext, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
 import BookEdit from "./BookEdit";
-import { BookContext } from "../contexts/BooksContext";
+import BookContext from "../contexts/BooksContext";
 
 export interface IBookCard {
   book: Book;

@@ -24,8 +24,9 @@ const defaultValues: IBookContext = {
   update: false,
 };
 
-export const BookContext = createContext<IBookContext>({ ...defaultValues });
+const BookContext = createContext<IBookContext>({ ...defaultValues });
 
+export default BookContext;
 interface IBookProvider {
   children: JSX.Element;
 }
@@ -107,4 +108,4 @@ const BookProvider: FC<IBookProvider> = ({ children }) => {
   );
 };
 
-export default BookProvider;
+export { BookProvider };

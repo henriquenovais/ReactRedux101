@@ -8,7 +8,7 @@ import {
 } from "react";
 import "../App.css";
 import { Book } from "../types";
-import { BookContext } from "../contexts/BooksContext";
+import BookContext from "../contexts/BooksContext";
 
 interface IBookEdit {
   book: Book;
