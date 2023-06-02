@@ -1,22 +1,20 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext } from "react";
 import "./App.css";
 import CreateBook from "./components/CreateBook";
-import { Book } from "./types";
 import BookCard from "./components/BookCard";
-import axios from "axios";
-import BookContext from "./contexts/BooksContext";
+import { BookContext } from "./contexts/BooksContext";
 
 const App: FC = () => {
-  const context = useContext(BookContext);
+  const bookContext = useContext(BookContext);
 
   return (
     <div>
       <div>
-        <CreateBook onSubmit={insertBook} />
+        <CreateBook />
       </div>
       <div className="app books-container">
-        {books.map((book) => (
-          <BookCard book={book} deleteBook={deleteBook} editBook={editBook} />
+        {bookContext.books.map((book) => (
+          <BookCard book={book} />
         ))}
       </div>
     </div>

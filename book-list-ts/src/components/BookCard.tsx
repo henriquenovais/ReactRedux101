@@ -27,12 +27,6 @@ const BookCard: FC<IBookCard> = ({ book }) => {
     bookContext.deleteBook(book.id);
   };
 
-  const handleEditSave = (id: string, newTitle: string) => {
-    //editBook(id, newTitle);
-    bookContext.editBook(id, newTitle);
-    setEnableEditMode(false);
-  };
-
   return (
     <div className="book-card card">
       <div className="book-card button-row">

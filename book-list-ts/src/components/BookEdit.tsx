@@ -11,11 +11,10 @@ import { Book } from "../types";
 import { BookContext } from "../contexts/BooksContext";
 
 interface IBookEdit {
-  onSave: (id: string, title: string) => void;
   book: Book;
 }
 
-const BookEdit: FC<IBookEdit> = ({ onSave, book }) => {
+const BookEdit: FC<IBookEdit> = ({ book }) => {
   const bookContext = useContext(BookContext);
   const [editedTitle, setEditedTitle] = useState(book.title);
 

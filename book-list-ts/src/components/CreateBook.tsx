@@ -3,11 +3,7 @@ import "../App.css";
 import { Book } from "../types";
 import { BookContext } from "../contexts/BooksContext";
 
-interface ICreateBook {
-  onSubmit: (book: Book) => void;
-}
-
-const CreateBook: FC<ICreateBook> = ({ onSubmit }) => {
+const CreateBook: FC = () => {
   const bookContext = useContext(BookContext);
   const [newTitle, setNewTitle] = useState<string>("");
 
