@@ -1,11 +1,11 @@
 {
   "books": [
     {
-      "title": "Lord Of The Rings",
+      "title": "Lord Of The Rings: Silmarilion",
       "id": 1
     },
     {
-      "title": "Hunger Games",
+      "title": "Hunger Games: Mocking Jay",
       "id": 2
     }
   ]

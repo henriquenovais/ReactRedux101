@@ -12,14 +12,14 @@ const BookCard: FC<IBookCard> = ({ book }) => {
   const bookContext = useContext(BookContext);
   const [enableEditMode, setEnableEditMode] = useState<boolean>(false);
 
-  const handleEditClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleEditClick = (event: MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
     event.stopPropagation();
 
     setEnableEditMode(true);
   };
 
-  const handleCloseClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleCloseClick = (event: MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -40,7 +40,10 @@ const BookCard: FC<IBookCard> = ({ book }) => {
       <div className="book-card content">
         <img alt="book" src={`https://picsum.photos/seed/${book.id}/246/300`} />
         {enableEditMode ? (
-          <BookEdit book={book} />
+          <BookEdit
+            book={book}
+            handleEditMode={() => setEnableEditMode(false)}
+          />
         ) : (
           <span className="book-card title">{book.title}</span>
         )}

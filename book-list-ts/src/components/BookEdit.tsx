@@ -12,9 +12,10 @@ import { BookContext } from "../contexts/BooksContext";
 
 interface IBookEdit {
   book: Book;
+  handleEditMode: (value: Boolean) => void;
 }
 
-const BookEdit: FC<IBookEdit> = ({ book }) => {
+const BookEdit: FC<IBookEdit> = ({ book, handleEditMode }) => {
   const bookContext = useContext(BookContext);
   const [editedTitle, setEditedTitle] = useState(book.title);
 
@@ -31,7 +32,7 @@ const BookEdit: FC<IBookEdit> = ({ book }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    //onSave(book.id, newTitle);
+    handleEditMode(false);
     bookContext.editBook(book.id, editedTitle);
   };
 
