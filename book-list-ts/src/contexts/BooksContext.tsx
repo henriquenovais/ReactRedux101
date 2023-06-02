@@ -1,11 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { FC, createContext, useEffect, useState } from "react";
 import { Book } from "../types";
 import axios from "axios";
 
 interface IBookContext {
   books: Book[];
   setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
-  update: boolean;
+  update: Boolean;
   setUpdate: React.Dispatch<React.SetStateAction<Boolean>>;
   insertBook: (book: Book) => Promise<void>;
   deleteBook: (id: string) => Promise<void>;
@@ -14,7 +14,17 @@ interface IBookContext {
 
 const BASE_URL = "http://localhost:3001/books/";
 
-const BookContext = createContext<IBookContext>({ value: 0 });
+const defaultValues: IBookContext = {
+  books: [],
+  deleteBook: async () => {},
+  editBook: async () => {},
+  insertBook: async () => {},
+  setUpdate: () => {},
+  setBooks: () => {},
+  update: false,
+};
+
+const BookContext = createContext<IBookContext>({ ...defaultValues });
 
 interface IBookProvider {
   children: JSX.Element;
@@ -80,7 +90,21 @@ const BookProvider: FC<IBookProvider> = ({ children }) => {
     setUpdate(!update);
   };
 
-  return <BookContext.Provider value>{children}</BookContext.Provider>;
+  return (
+    <BookContext.Provider
+      value={{
+        books,
+        deleteBook,
+        editBook,
+        insertBook,
+        setUpdate,
+        setBooks,
+        update,
+      }}
+    >
+      {children}
+    </BookContext.Provider>
+  );
 };
 
-export default BookContext;
+export default BookProvider;
