@@ -15,7 +15,6 @@ const App: FC = () => {
         <CreateBook onSubmit={insertBook} />
       </div>
       <div className="app books-container">
-        {context.value}
         {books.map((book) => (
           <BookCard book={book} deleteBook={deleteBook} editBook={editBook} />
         ))}

@@ -1,15 +1,15 @@
-import { FC, MouseEvent, useState } from "react";
+import { FC, MouseEvent, useContext, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
 import BookEdit from "./BookEdit";
+import { BookContext } from "../contexts/BooksContext";
 
 export interface IBookCard {
   book: Book;
-  deleteBook: (id: string) => void;
-  editBook: (id: string, newTitle: string) => void;
 }
 
-const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
+const BookCard: FC<IBookCard> = ({ book }) => {
+  const bookContext = useContext(BookContext);
   const [enableEditMode, setEnableEditMode] = useState<boolean>(false);
 
   const handleEditClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -23,11 +23,13 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    deleteBook(book.id);
+    //deleteBook(book.id);
+    bookContext.deleteBook(book.id);
   };
 
   const handleEditSave = (id: string, newTitle: string) => {
-    editBook(id, newTitle);
+    //editBook(id, newTitle);
+    bookContext.editBook(id, newTitle);
     setEnableEditMode(false);
   };
 
@@ -44,7 +46,7 @@ const BookCard: FC<IBookCard> = ({ book, deleteBook, editBook }) => {
       <div className="book-card content">
         <img alt="book" src={`https://picsum.photos/seed/${book.id}/246/300`} />
         {enableEditMode ? (
-          <BookEdit book={book} onSave={handleEditSave} />
+          <BookEdit book={book} />
         ) : (
           <span className="book-card title">{book.title}</span>
         )}
