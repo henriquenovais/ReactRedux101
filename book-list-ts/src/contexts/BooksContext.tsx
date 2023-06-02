@@ -24,7 +24,7 @@ const defaultValues: IBookContext = {
   update: false,
 };
 
-const BookContext = createContext<IBookContext>({ ...defaultValues });
+export const BookContext = createContext<IBookContext>({ ...defaultValues });
 
 interface IBookProvider {
   children: JSX.Element;

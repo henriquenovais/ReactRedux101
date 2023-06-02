@@ -1,6 +1,14 @@
-import { ChangeEvent, FC, FormEvent, useState, MouseEvent } from "react";
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useState,
+  MouseEvent,
+  useContext,
+} from "react";
 import "../App.css";
 import { Book } from "../types";
+import { BookContext } from "../contexts/BooksContext";
 
 interface IBookEdit {
   onSave: (id: string, title: string) => void;
@@ -8,13 +16,14 @@ interface IBookEdit {
 }
 
 const BookEdit: FC<IBookEdit> = ({ onSave, book }) => {
-  const [newTitle, setNewTitle] = useState(book.title);
+  const bookContext = useContext(BookContext);
+  const [editedTitle, setEditedTitle] = useState(book.title);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
-    setNewTitle(event.target.value);
+    setEditedTitle(event.target.value);
   };
 
   const handleSubmit = (
@@ -23,12 +32,13 @@ const BookEdit: FC<IBookEdit> = ({ onSave, book }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    onSave(book.id, newTitle);
+    //onSave(book.id, newTitle);
+    bookContext.editBook(book.id, editedTitle);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" onChange={onChange} value={newTitle} />
+      <input type="text" onChange={onChange} value={editedTitle} />
       <button onClick={handleSubmit}>Save</button>
     </form>
   );

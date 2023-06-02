@@ -1,12 +1,14 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
+import { BookContext } from "../contexts/BooksContext";
 
 interface ICreateBook {
   onSubmit: (book: Book) => void;
 }
 
 const CreateBook: FC<ICreateBook> = ({ onSubmit }) => {
+  const bookContext = useContext(BookContext);
   const [newTitle, setNewTitle] = useState<string>("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -18,7 +20,8 @@ const CreateBook: FC<ICreateBook> = ({ onSubmit }) => {
       title: newTitle,
     };
 
-    onSubmit(newBook);
+    //onSubmit(newBook);
+    bookContext.insertBook(newBook);
 
     setNewTitle("");
   };
