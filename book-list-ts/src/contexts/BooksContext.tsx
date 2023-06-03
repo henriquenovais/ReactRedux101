@@ -35,15 +35,15 @@ const BookProvider: FC<IBookProvider> = ({ children }) => {
   const [books, setBooks] = useState<Array<Book>>([]);
   const [update, setUpdate] = useState<Boolean>(false);
 
+  useEffect(() => {
+    getBooks();
+  }, [update]);
+
   const getBooks = async (): Promise<void> => {
     const response = await axios.get(BASE_URL);
 
     setBooks(response.data);
   };
-
-  useEffect(() => {
-    getBooks();
-  }, [update]);
 
   const insertBook = async (book: Book): Promise<void> => {
     await axios.post(BASE_URL, {

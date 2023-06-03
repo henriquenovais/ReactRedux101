@@ -9,7 +9,7 @@ export interface IBookCard {
 }
 
 const BookCard: FC<IBookCard> = ({ book }) => {
-  const bookContext = useContext(BookContext);
+  const { deleteBook } = useContext(BookContext);
   const [enableEditMode, setEnableEditMode] = useState<boolean>(false);
 
   const handleEditClick = (event: MouseEvent<HTMLButtonElement>): void => {
@@ -24,7 +24,7 @@ const BookCard: FC<IBookCard> = ({ book }) => {
     event.stopPropagation();
 
     //deleteBook(book.id);
-    bookContext.deleteBook(book.id);
+    deleteBook(book.id);
   };
 
   return (

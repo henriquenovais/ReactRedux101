@@ -2,10 +2,10 @@ import { FC, useContext } from "react";
 import "./App.css";
 import CreateBook from "./components/CreateBook";
 import BookCard from "./components/BookCard";
-import { BookContext } from "./contexts/BooksContext";
+import BookContext from "./contexts/BooksContext";
 
 const App: FC = () => {
-  const bookContext = useContext(BookContext);
+  const { books } = useContext(BookContext);
 
   return (
     <div>
@@ -13,8 +13,8 @@ const App: FC = () => {
         <CreateBook />
       </div>
       <div className="app books-container">
-        {bookContext.books.map((book) => (
-          <BookCard book={book} />
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
         ))}
       </div>
     </div>

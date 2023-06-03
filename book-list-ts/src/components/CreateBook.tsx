@@ -4,7 +4,7 @@ import { Book } from "../types";
 import BookContext from "../contexts/BooksContext";
 
 const CreateBook: FC = () => {
-  const bookContext = useContext(BookContext);
+  const { insertBook } = useContext(BookContext);
   const [newTitle, setNewTitle] = useState<string>("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -17,7 +17,7 @@ const CreateBook: FC = () => {
     };
 
     //onSubmit(newBook);
-    bookContext.insertBook(newBook);
+    insertBook(newBook);
 
     setNewTitle("");
   };

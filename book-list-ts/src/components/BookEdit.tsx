@@ -16,7 +16,7 @@ interface IBookEdit {
 }
 
 const BookEdit: FC<IBookEdit> = ({ book, handleEditMode }) => {
-  const bookContext = useContext(BookContext);
+  const { editBook } = useContext(BookContext);
   const [editedTitle, setEditedTitle] = useState(book.title);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +33,7 @@ const BookEdit: FC<IBookEdit> = ({ book, handleEditMode }) => {
     event.stopPropagation();
 
     handleEditMode(false);
-    bookContext.editBook(book.id, editedTitle);
+    editBook(book.id, editedTitle);
   };
 
   return (
