@@ -1,15 +1,15 @@
-import { FC, MouseEvent, useContext, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
 import BookEdit from "./BookEdit";
-import BookContext from "../contexts/BooksContext";
+import useBooksContext from "../hooks/useBookContext";
 
 export interface IBookCard {
   book: Book;
 }
 
 const BookCard: FC<IBookCard> = ({ book }) => {
-  const { deleteBook } = useContext(BookContext);
+  const { deleteBook } = useBooksContext();
   const [enableEditMode, setEnableEditMode] = useState<boolean>(false);
 
   const handleEditClick = (event: MouseEvent<HTMLButtonElement>): void => {

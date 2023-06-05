@@ -1,10 +1,10 @@
-import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import "../App.css";
 import { Book } from "../types";
-import BookContext from "../contexts/BooksContext";
+import useBooksContext from "../hooks/useBookContext";
 
 const CreateBook: FC = () => {
-  const { insertBook } = useContext(BookContext);
+  const { insertBook } = useBooksContext();
   const [newTitle, setNewTitle] = useState<string>("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

@@ -1,11 +1,11 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import "./App.css";
 import CreateBook from "./components/CreateBook";
 import BookCard from "./components/BookCard";
-import BookContext from "./contexts/BooksContext";
+import useBooksContext from "./hooks/useBookContext";
 
 const App: FC = () => {
-  const { books } = useContext(BookContext);
+  const { books } = useBooksContext();
 
   return (
     <div>

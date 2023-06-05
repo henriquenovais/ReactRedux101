@@ -2,7 +2,7 @@ import { FC, createContext, useEffect, useState } from "react";
 import { Book } from "../types";
 import axios from "axios";
 
-interface IBookContext {
+export interface IBookContext {
   books: Book[];
   setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
   update: Boolean;

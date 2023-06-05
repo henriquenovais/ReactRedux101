@@ -1,14 +1,7 @@
-import {
-  ChangeEvent,
-  FC,
-  FormEvent,
-  useState,
-  MouseEvent,
-  useContext,
-} from "react";
+import { ChangeEvent, FC, FormEvent, useState, MouseEvent } from "react";
 import "../App.css";
 import { Book } from "../types";
-import BookContext from "../contexts/BooksContext";
+import useBooksContext from "../hooks/useBookContext";
 
 interface IBookEdit {
   book: Book;
@@ -16,7 +9,7 @@ interface IBookEdit {
 }
 
 const BookEdit: FC<IBookEdit> = ({ book, handleEditMode }) => {
-  const { editBook } = useContext(BookContext);
+  const { editBook } = useBooksContext();
   const [editedTitle, setEditedTitle] = useState(book.title);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
