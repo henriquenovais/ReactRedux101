@@ -1,23 +1,21 @@
 import { FC } from "react";
+import { ButtonColoring, ButtonShape } from "../constants/enums/button";
+import { stringUtils } from "../utils/Strings";
 
 interface IGenericButton {
-  primary?: Boolean;
-  secondary?: Boolean;
-  success?: Boolean;
-  warning?: Boolean;
-  danger?: Boolean;
-  outline?: Boolean;
-  rounded?: Boolean;
+  shape?: ButtonShape;
+  coloring?: ButtonColoring;
+  isOutlined?: Boolean;
+  isFilled?: Boolean;
 }
 
+const stringUtil = stringUtils();
+
 const GenericButton: FC<IGenericButton> = ({
-  primary,
-  secondary,
-  success,
-  warning,
-  danger,
-  outline,
-  rounded,
+  shape = ButtonShape.ROUNDED_CORNERS,
+  coloring = ButtonColoring.PRIMARY,
+  isOutlined = true,
+  isFilled = true,
 }) => {
   return <button></button>;
 };
