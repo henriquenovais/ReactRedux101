@@ -12,6 +12,7 @@ const App: FC = () => {
           text="Click me!"
           icon={<GoBell />}
           coloring={ButtonColoring.PRIMARY}
+          onClick={() => console.log("kappa")}
         />
         <GenericButton text="Buy now!" coloring={ButtonColoring.SECONDARY} />
         <GenericButton text="See deal!" coloring={ButtonColoring.SUCCESS} />
