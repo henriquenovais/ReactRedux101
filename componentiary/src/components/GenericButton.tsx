@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
-import { stringUtils } from "../utils/Strings";
 
 interface IGenericButton {
   shape?: ButtonShape;
@@ -8,8 +7,6 @@ interface IGenericButton {
   isOutlined?: Boolean;
   isFilled?: Boolean;
 }
-
-const stringUtil = stringUtils();
 
 const GenericButton: FC<IGenericButton> = ({
   shape = ButtonShape.ROUNDED_CORNERS,
