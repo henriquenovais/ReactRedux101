@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
+import { className } from "../utils/Strings";
 
 interface IGenericButton {
   shape?: ButtonShape;
@@ -14,6 +15,8 @@ const GenericButton: FC<IGenericButton> = ({
   isOutlined = true,
   isFilled = true,
 }) => {
+  const classname = className("py-1.5 px-1.5", {});
+
   return <button></button>;
 };
 
