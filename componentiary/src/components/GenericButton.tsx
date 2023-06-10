@@ -20,7 +20,7 @@ const GenericButton: FC<IGenericButton> = ({
   isFilled = true,
 }) => {
   const classname = className(
-    "flex items-center py-1.5 px-1.5 border w-32 font-bold",
+    "flex items-center justify-center py-1.5 px-1.5 border w-32 font-bold",
     {
       "border-blue-500 bg-blue-500 text-white":
         coloring === ButtonColoring.PRIMARY,
