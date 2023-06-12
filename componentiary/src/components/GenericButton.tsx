@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
 import { className } from "../utils/Strings";
 
@@ -9,6 +9,7 @@ interface IGenericButton {
   coloring?: ButtonColoring;
   isOutlined?: Boolean;
   isFilled?: Boolean;
+  onClick?: () => void;
 }
 
 const GenericButton: FC<IGenericButton> = ({
@@ -18,7 +19,7 @@ const GenericButton: FC<IGenericButton> = ({
   coloring = ButtonColoring.PRIMARY,
   isOutlined = true,
   isFilled = true,
-  ...rest
+  onClick = () => {},
 }) => {
   const classname = className(
     "flex items-center justify-center py-1.5 px-1.5 border w-32 font-bold",
@@ -38,8 +39,15 @@ const GenericButton: FC<IGenericButton> = ({
     }
   );
 
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    onClick();
+  };
+
   return (
-    <button className={classname} {...rest}>
+    <button className={classname} onClick={handleClick}>
       {icon}
       {text}
     </button>
