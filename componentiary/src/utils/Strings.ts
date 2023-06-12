@@ -1,6 +1,6 @@
-export const className = (
-  input: string,
-  conditions?: Record<string, Boolean>
+export const classNamer = (
+  conditions: Record<string, Boolean>,
+  ...input: string[]
 ): string => {
   if (conditions) {
     const properties = Object.keys(conditions).map((propertie, index) => {
@@ -11,8 +11,8 @@ export const className = (
       return "";
     });
 
-    return [input, ...properties].join(" ");
+    return [...input, ...properties].join(" ");
   }
 
-  return input;
+  return input.join(" ");
 };
