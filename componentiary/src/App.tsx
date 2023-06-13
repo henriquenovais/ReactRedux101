@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ButtonsPage from "./pages/Buttons";
+import ButtonsPage from "./pages/ButtonsPage";
 
 const App: FC = () => {
   return (
