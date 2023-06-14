@@ -13,7 +13,7 @@ const GenericAccordion: FC<IGenericAccordion> = ({ items }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    expanded === index ? setExpanded(-1) : setExpanded(index);
+    setExpanded((current) => (current === index ? -1 : index));
   };
 
   return (
@@ -31,7 +31,7 @@ const GenericAccordion: FC<IGenericAccordion> = ({ items }) => {
               onClick={(event) => onClick(event, index)}
             >
               {item.header}
-              {isExpanded ? <GoChevronLeft /> : <GoChevronDown />}
+              {isExpanded ? <GoChevronDown /> : <GoChevronLeft />}
             </div>
             {isExpanded && (
               <div className="cursor-default p-1 text-left border-t-2 border-gray-950">
