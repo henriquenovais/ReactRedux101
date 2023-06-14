@@ -16,16 +16,14 @@ const GenericAccordion: FC<IGenericAccordion> = ({ items }) => {
   };
 
   return (
-    <span>
+    <span className="flex flex-col gap-1.5">
       {items.map((item, index) => {
         const isExpanded = index === expanded;
         return (
-          <span key={item.id}>
-            <span onClick={(event) => onClick(event, index)}>
-              {item.header}
-            </span>
-            {isExpanded && item.description}
-          </span>
+          <div key={item.id}>
+            <div onClick={(event) => onClick(event, index)}>{item.header}</div>
+            {isExpanded && <div>{item.description}</div>}
+          </div>
         );
       })}
     </span>
