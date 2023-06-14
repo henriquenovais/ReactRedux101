@@ -12,7 +12,7 @@ const GenericAccordion: FC<IGenericAccordion> = ({ items }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    setExpanded(index);
+    expanded === index ? setExpanded(-1) : setExpanded(index);
   };
 
   return (
