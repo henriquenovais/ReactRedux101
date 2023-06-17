@@ -1,6 +1,7 @@
 import { FC } from "react";
 import ButtonsPage from "./pages/ButtonsPage";
 import AccordionsPage from "./pages/AccordionsPage";
+import DropdownPage from "./pages/DropdownPage";
 
 const App: FC = () => {
   return (
@@ -8,6 +9,7 @@ const App: FC = () => {
       <h1>Componentiary</h1>
       <ButtonsPage />
       <AccordionsPage />
+      <DropdownPage />
     </div>
   );
 };

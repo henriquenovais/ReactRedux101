@@ -35,6 +35,7 @@ const GenericDropdown: FC<IGenericDropdown> = ({ options }) => {
     event.stopPropagation();
 
     setSelected(option);
+    setToggle((current) => !current);
   };
 
   return (
@@ -44,3 +45,5 @@ const GenericDropdown: FC<IGenericDropdown> = ({ options }) => {
     </div>
   );
 };
+
+export default GenericDropdown;
