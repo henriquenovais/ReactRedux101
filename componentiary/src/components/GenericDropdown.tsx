@@ -2,15 +2,17 @@ import { FC, MouseEvent, useState } from "react";
 import { DropdownItem } from "../types/genericComponents";
 
 export interface IGenericDropdown {
+  onChange: (id: DropdownItem) => void;
   options: DropdownItem[];
+  value: DropdownItem;
 }
 
-const GenericDropdown: FC<IGenericDropdown> = ({ options }) => {
+const GenericDropdown: FC<IGenericDropdown> = ({
+  options,
+  onChange,
+  value,
+}) => {
   const [toggle, setToggle] = useState<Boolean>(false);
-  const [selected, setSelected] = useState<DropdownItem>({
-    id: "",
-    label: "Select ...",
-  });
 
   const showOptions = (options: DropdownItem[]): JSX.Element[] => {
     return options.map((option) => (
@@ -34,13 +36,13 @@ const GenericDropdown: FC<IGenericDropdown> = ({ options }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    setSelected(option);
+    onChange(option);
     setToggle((current) => !current);
   };
 
   return (
     <div>
-      <div onClick={handleToggleClick}>{selected.label}</div>
+      <div onClick={handleToggleClick}>{value.label}</div>
       <div>{toggle && showOptions(options)}</div>
     </div>
   );

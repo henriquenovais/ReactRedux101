@@ -1,8 +1,13 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import GenericDropdown from "../components/GenericDropdown";
 import { DropdownItem } from "../types/genericComponents";
 
 const DropdownPage: FC = () => {
+  const [value, setValue] = useState<DropdownItem>({
+    id: "",
+    label: "Select ...",
+  });
+
   const items: DropdownItem[] = [
     {
       id: "1",
@@ -22,7 +27,11 @@ const DropdownPage: FC = () => {
     <div className="w-fit p-2 border-2 border-solid border-gray-950">
       <h3 className="text-3xl font-bold">Dropdown</h3>
       <div className="flex flex-col gap-3">
-        <GenericDropdown options={items} />
+        <GenericDropdown
+          options={items}
+          value={value}
+          onChange={(option) => setValue(option)}
+        />
       </div>
     </div>
   );
