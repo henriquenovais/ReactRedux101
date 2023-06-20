@@ -1,5 +1,6 @@
 import { FC, MouseEvent, useState } from "react";
 import { DropdownItem } from "../types/genericComponents";
+import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 export interface IGenericDropdown {
   onChange: (id: DropdownItem) => void;
@@ -14,13 +15,14 @@ const GenericDropdown: FC<IGenericDropdown> = ({
 }) => {
   const [toggle, setToggle] = useState<Boolean>(false);
 
-  const showOptions = (options: DropdownItem[]): JSX.Element[] => {
-    return options.map((option) => (
-      <div onClick={(event) => handleDropdownClick(event, option)}>
-        {option.label}
-      </div>
-    ));
-  };
+  const showOptions: JSX.Element[] = options.map((option) => (
+    <div
+      className="hover:bg-sky-100 rounded cursor-pointer p-1"
+      onClick={(event) => handleDropdownClick(event, option)}
+    >
+      {option.label}
+    </div>
+  ));
 
   const handleToggleClick = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -41,9 +43,19 @@ const GenericDropdown: FC<IGenericDropdown> = ({
   };
 
   return (
-    <div>
-      <div onClick={handleToggleClick}>{value.label}</div>
-      <div>{toggle && showOptions(options)}</div>
+    <div className="w-80 relative ">
+      <div
+        className="flex justify-between items-center cursor-pointer border rounded p-3 shadow bg-white w-full"
+        onClick={handleToggleClick}
+      >
+        {value.label}
+        {toggle ? <GoChevronDown /> : <GoChevronLeft />}{" "}
+      </div>
+      {toggle && (
+        <div className="absolute top-full border rounded p-3 shadow bg-white w-full">
+          {showOptions}
+        </div>
+      )}
     </div>
   );
 };
