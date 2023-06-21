@@ -1,6 +1,18 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import GenericDropdown from "../components/GenericDropdown";
 import { DropdownItem } from "../types/genericComponents";
+
+// creates event handler on the entire document
+const handleClick = (this: Document, ev: MouseEvent): any => {
+  console.log(ev.target);
+};
+document.addEventListener("click", handleClick);
+
+/*
+ABOUT EVENT HANDLING
+
+Event handlers go through three phases of i
+*/
 
 const DropdownPage: FC = () => {
   const [value, setValue] = useState<DropdownItem>({
