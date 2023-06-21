@@ -3,10 +3,17 @@ import GenericDropdown from "../components/GenericDropdown";
 import { DropdownItem } from "../types/genericComponents";
 
 // creates event handler on the entire document
-function handleClick(this: Document, ev: MouseEvent): void {
+// function handleClick(this: Document, ev: MouseEvent): void {
+//  console.log("ev.target >>>>>>>>>>>>", ev.target);
+//  console.log("dom clicked!!");
+//}
+
+const handleClick: (this: Document, ev: MouseEvent) => any = (
+  ev: MouseEvent
+) => {
   console.log("ev.target >>>>>>>>>>>>", ev.target);
   console.log("dom clicked!!");
-}
+};
 
 document.addEventListener("click", handleClick);
 
