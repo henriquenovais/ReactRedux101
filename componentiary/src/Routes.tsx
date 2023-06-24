@@ -6,7 +6,7 @@ import ButtonsPage from "./pages/ButtonsPage";
 import AccordionsPage from "./pages/AccordionsPage";
 import { Paths } from "./types/routes";
 
-const paths: Record<string, JSX.Element> = {
+const PAGES: Record<string, JSX.Element> = {
   [Paths.DROPDOWN_PAGE]: <DropdownPage />,
   [Paths.BUTTON_PAGE]: <ButtonsPage />,
   [Paths.ACCORDION_PAGE]: <AccordionsPage />,
@@ -17,7 +17,7 @@ const Routes: FC = () => {
   const { currentPath } = useContext(NavigationContext);
 
   return (
-    <React.Fragment>{paths[currentPath] ?? <DropdownPage />}</React.Fragment>
+    <React.Fragment>{PAGES[currentPath] ?? <DropdownPage />}</React.Fragment>
   );
 };
 

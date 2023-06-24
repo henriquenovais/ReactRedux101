@@ -2,16 +2,19 @@ import { FC, MouseEvent, useContext } from "react";
 import { classNamer } from "../utils/Strings";
 import NavigationContext from "../contexts/NavigationContext";
 
-interface ILink {
+export interface IGenericLink {
   label: string;
   to: string;
   selectedStyling: string;
 }
 
-const Link: FC<ILink> = ({ label, to, selectedStyling }) => {
+const GenericLink: FC<IGenericLink> = ({ label, to, selectedStyling }) => {
   const { currentPath, navigateTo } = useContext(NavigationContext);
 
-  const classNames = classNamer({ selectedStyling: to === currentPath }, "");
+  const classNames = classNamer(
+    { [`${selectedStyling}`]: to === currentPath },
+    "text-blue-500"
+  );
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.ctrlKey || event.metaKey) return; //when ctrl click should behave as normal
@@ -29,4 +32,4 @@ const Link: FC<ILink> = ({ label, to, selectedStyling }) => {
   );
 };
 
-export default Link;
+export default GenericLink;

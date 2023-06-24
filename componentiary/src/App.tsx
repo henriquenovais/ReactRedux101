@@ -1,8 +1,8 @@
 import { FC } from "react";
-import ButtonsPage from "./pages/ButtonsPage";
-import AccordionsPage from "./pages/AccordionsPage";
-import DropdownPage from "./pages/DropdownPage";
+
 import { NavigationContextProvider } from "./contexts/NavigationContext";
+import Routes from "./Routes";
+import GenericSidebar from "./components/GenericSidebar";
 
 /**
  * NAVIGATION
@@ -14,10 +14,10 @@ import { NavigationContextProvider } from "./contexts/NavigationContext";
 const App: FC = () => {
   return (
     <NavigationContextProvider>
-      <h1>Componentiary</h1>
-      <ButtonsPage />
-      <AccordionsPage />
-      <DropdownPage />
+      <div className="flex flex-row">
+        <GenericSidebar />
+        <Routes />
+      </div>
     </NavigationContextProvider>
   );
 };

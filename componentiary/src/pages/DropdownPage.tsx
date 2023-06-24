@@ -24,7 +24,7 @@ const DropdownPage: FC = () => {
   ];
 
   return (
-    <div className="w-fit p-2 border-2 border-solid border-gray-950">
+    <div className="w-fit p-2">
       <h3 className="text-3xl font-bold">Dropdown</h3>
       <div className="flex flex-col gap-3">
         <GenericDropdown

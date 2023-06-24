@@ -25,7 +25,7 @@ const AccordionsPage: FC = () => {
   ];
 
   return (
-    <div className="w-fit p-2 border-2 border-solid border-gray-950">
+    <div className="w-fit p-2">
       <h3 className="text-3xl font-bold">Accordions</h3>
       <GenericAccordion items={items} />
     </div>

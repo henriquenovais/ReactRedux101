@@ -11,7 +11,7 @@ const NavigationContext = createContext<INavigationContext>({
 });
 
 interface INavigationContextProvider {
-  children: JSX.Element[];
+  children: JSX.Element;
 }
 
 const NavigationContextProvider: FC<INavigationContextProvider> = ({
@@ -40,7 +40,6 @@ const NavigationContextProvider: FC<INavigationContextProvider> = ({
 
   return (
     <NavigationContext.Provider value={{ currentPath, navigateTo }}>
-      {currentPath}
       {children}
     </NavigationContext.Provider>
   );
