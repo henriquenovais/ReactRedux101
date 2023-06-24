@@ -20,14 +20,13 @@ const handleClick: (this: Document, ev: MouseEvent) => any = (
   ev: MouseEvent
 ) => {
   assertIsNode(ev.target);
-
+  console.log("dropdown >>>>>>>>>>>>", dropdown);
+  console.log("ev.target >>>>>>>>>>>>", ev.target);
   if (dropdown?.contains(ev.target)) {
     console.log("Inside dropdown");
   } else {
     console.log("outside dropdown");
   }
-  console.log("ev.target >>>>>>>>>>>>", ev.target);
-  console.log("dom clicked!!");
 };
 
 document.addEventListener("click", handleClick, true);
