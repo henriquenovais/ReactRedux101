@@ -1,6 +1,58 @@
-import { FC, MouseEvent, useState } from "react";
+import { FC, MouseEvent as MouseEventReact, useState } from "react";
 import { DropdownItem } from "../types/genericComponents";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
+
+// creates event handler on the entire document
+// function handleClick(this: Document, ev: MouseEvent): void {
+//  console.log("ev.target >>>>>>>>>>>>", ev.target);
+//  console.log("dom clicked!!");
+//}
+
+const dropdown = document.querySelector(".w-80");
+
+export function assertIsNode(e: EventTarget | null): asserts e is Node {
+  if (!e || !("nodeType" in e)) {
+    throw new Error(`Node expected`);
+  }
+}
+
+const handleClick: (this: Document, ev: MouseEvent) => any = (
+  ev: MouseEvent
+) => {
+  assertIsNode(ev.target);
+  console.log("dropdown >>>>>>>>>>>>", dropdown);
+  console.log("ev.target >>>>>>>>>>>>", ev.target);
+  if (dropdown?.contains(ev.target)) {
+    console.log("Inside dropdown");
+  } else {
+    console.log("outside dropdown");
+  }
+};
+
+document.addEventListener("click", handleClick, true);
+
+/*
+ABOUT EVENT HANDLING
+
+Event handlers go through three phases:
+
+Phase 1 - Capture Phase => Go to the the parent of the element targetted by the event
+and see if the parent has an appropriate handler for that event. Then goes up until the all
+parents of the target element have been searched for that same event handler
+
+Phase 2 - Target Phase => Go to the exact component that was the target of the event 
+and search for an event handler for that action specifically.
+
+Phase 3 - Bubble Phase => Same process as Capture Phase but starting at the children of
+the target element and searches in the children of the children until the very bottom of the hierarchy
+for an event handler
+
+
+TROUBLESHOOTING EVENT HANDLER TIPS
+
+performance.now() - Excellent way to figure out the current measure of time with high precision. This is 
+the amount of miliseconds since the page loaded
+*/
 
 export interface IGenericDropdown {
   onChange: (id: DropdownItem) => void;
@@ -24,7 +76,7 @@ const GenericDropdown: FC<IGenericDropdown> = ({
     </div>
   ));
 
-  const handleToggleClick = (event: MouseEvent<HTMLDivElement>) => {
+  const handleToggleClick = (event: MouseEventReact<HTMLDivElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -32,7 +84,7 @@ const GenericDropdown: FC<IGenericDropdown> = ({
   };
 
   const handleDropdownClick = (
-    event: MouseEvent<HTMLDivElement>,
+    event: MouseEventReact<HTMLDivElement>,
     option: DropdownItem
   ) => {
     event.preventDefault();
