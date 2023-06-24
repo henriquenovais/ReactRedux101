@@ -1,4 +1,4 @@
-import { FC, createContext, useContext, useEffect, useState } from "react";
+import { FC, createContext, useEffect, useState } from "react";
 
 interface INavigationContext {
   currentPath: string;
