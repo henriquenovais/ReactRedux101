@@ -4,18 +4,30 @@ import GenericModal from "../components/GenericModal";
 import { ModalType } from "../constants/enums/modal";
 
 const ModalPage: FC = () => {
-  const [toggleModal, setToggleModal] = useState<boolean>(false);
+  const [dissmissModal, setDismissModal] = useState<boolean>(false);
+  const [choiceModal, setChoiceModal] = useState<boolean>(false);
 
   return (
     <div>
       <GenericButton
-        text="Open Modal"
-        onClick={() => setToggleModal((current) => !current)}
+        text="Open Choice Modal"
+        onClick={() => setChoiceModal((current) => !current)}
       />
-      {toggleModal && (
+      {choiceModal && (
         <GenericModal
           type={ModalType.CHOICE}
-          onClose={() => setToggleModal(false)}
+          onClose={() => setChoiceModal(false)}
+          onConfirm={() => {}}
+        />
+      )}
+      <GenericButton
+        text="Open Default Modal"
+        onClick={() => setDismissModal((current) => !current)}
+      />
+      {dissmissModal && (
+        <GenericModal
+          type={ModalType.DISMISS}
+          onClose={() => setDismissModal(false)}
           onConfirm={() => {}}
         />
       )}
