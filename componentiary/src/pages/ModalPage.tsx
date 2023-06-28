@@ -8,7 +8,7 @@ const ModalPage: FC = () => {
   const [choiceModal, setChoiceModal] = useState<boolean>(false);
 
   return (
-    <div>
+    <div className="flex flex-row p-5 gap-3">
       <GenericButton
         text="Open Choice Modal"
         onClick={() => setChoiceModal((current) => !current)}

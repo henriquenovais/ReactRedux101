@@ -39,7 +39,7 @@ const GenericButton: FC<IGenericButton> = ({
       "rounded-lg": shape === ButtonShape.ROUNDED_CORNERS,
     },
     className,
-    "flex items-center justify-center py-1.5 px-1.5 border w-32 font-bold"
+    "flex items-center justify-center py-1.5 px-1.5 border w-32 h-12 font-bold"
   );
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
