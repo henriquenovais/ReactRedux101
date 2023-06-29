@@ -1,7 +1,12 @@
-import { FC } from "react";
+import { TableColumn, TableData } from "../types/genericComponents";
 
-const GenericTable: FC = () => {
+interface IGenericTable<T> {
+  columnConfigs: TableColumn<T>[];
+  rows: TableData<T>[];
+}
+
+function GenericTable<T extends unknown>(props: IGenericTable<T>) {
   return <></>;
-};
+}
 
 export default GenericTable;
