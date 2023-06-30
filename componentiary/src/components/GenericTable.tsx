@@ -1,11 +1,14 @@
 import { TableColumn, TableData } from "../types/genericComponents";
 
 interface IGenericTable<T> {
-  columnConfigs: TableColumn<T>[];
+  columnsConfig: TableColumn<T>[];
   rows: TableData<T>[];
 }
 
-function GenericTable<T extends unknown>(props: IGenericTable<T>) {
+export function GenericTable<T>({
+  columnsConfig,
+  rows,
+}: IGenericTable<T>): JSX.Element {
   return <></>;
 }
 
