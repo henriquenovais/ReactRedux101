@@ -9,7 +9,16 @@ export function GenericTable<T>({
   columnsConfig,
   rows,
 }: IGenericTable<T>): JSX.Element {
-  return <></>;
+  return (
+    <table>
+      <thead>
+        {columnsConfig.map((item) => (
+          <th>{item.headerName}</th>
+        ))}
+      </thead>
+      <tbody></tbody>
+    </table>
+  );
 }
 
 export default GenericTable;
