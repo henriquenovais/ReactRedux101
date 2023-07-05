@@ -20,11 +20,11 @@ const fruitHeaders: TableColumn<Fruit>[] = [
   },
   {
     headerName: "Color",
-    renderData: (fruit: Fruit) => <div className={`w-1 h-1 ${fruit.color}`} />,
+    renderData: (fruit: Fruit) => <div className={`w-5 h-5 ${fruit.color}`} />,
   },
   {
     headerName: "Deliciousness Score",
-    renderData: (fruit: Fruit) => <div className={`w-1 h-1 ${fruit.color}`} />,
+    renderData: (fruit: Fruit) => fruit.tasteScore,
   },
 ];
 

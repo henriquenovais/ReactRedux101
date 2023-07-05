@@ -9,6 +9,7 @@ interface IGenericTable<T> {
 export function GenericTable<T>({
   columnsConfig,
   rows,
+  keyGenerator,
 }: IGenericTable<T>): JSX.Element {
   return (
     <table>
@@ -17,7 +18,15 @@ export function GenericTable<T>({
           <th>{item.headerName}</th>
         ))}
       </thead>
-      <tbody></tbody>
+      <tbody>
+        {rows.data.map((row) => (
+          <tr key={keyGenerator(row)}>
+            {columnsConfig.map((column) => (
+              <td>{column.renderData(row)}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }
