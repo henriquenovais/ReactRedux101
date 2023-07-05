@@ -20,6 +20,7 @@ const links: IGenericLink[] = [
   { label: "Button", to: Paths.BUTTON_PAGE, selectedStyling },
   { label: "Accordion", to: Paths.ACCORDION_PAGE, selectedStyling },
   { label: "Modal", to: Paths.MODAL_PAGE, selectedStyling },
+  { label: "Table", to: Paths.TABLE_PAGE, selectedStyling },
 ];
 
 const App: FC = () => {

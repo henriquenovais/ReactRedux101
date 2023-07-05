@@ -1,8 +1,9 @@
 import { TableColumn, TableData } from "../types/genericComponents";
 
 interface IGenericTable<T> {
+  keyGenerator: (element: T) => string;
   columnsConfig: TableColumn<T>[];
-  rows: TableData<T>[];
+  rows: TableData<T>;
 }
 
 export function GenericTable<T>({

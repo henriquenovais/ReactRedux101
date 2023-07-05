@@ -12,7 +12,6 @@ export interface DropdownItem {
 export interface TableColumn<T> {
   headerName: string;
   renderData: (input: T) => string | number | JSX.Element;
-  keyGenerator: (input: T) => string;
 }
 
 export interface TableData<T> {

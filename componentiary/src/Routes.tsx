@@ -6,12 +6,14 @@ import ButtonsPage from "./pages/ButtonsPage";
 import AccordionsPage from "./pages/AccordionsPage";
 import { Paths } from "./constants/enums/routes";
 import ModalPage from "./pages/ModalPage";
+import TablePage from "./pages/TablePage";
 
 const PAGES: Record<string, JSX.Element> = {
   [Paths.DROPDOWN_PAGE]: <DropdownPage />,
   [Paths.BUTTON_PAGE]: <ButtonsPage />,
   [Paths.ACCORDION_PAGE]: <AccordionsPage />,
   [Paths.MODAL_PAGE]: <ModalPage />,
+  [Paths.TABLE_PAGE]: <TablePage />,
   [Paths.ROOT]: <AccordionsPage />,
 };
 
