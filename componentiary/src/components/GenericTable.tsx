@@ -12,17 +12,19 @@ export function GenericTable<T>({
   keyGenerator,
 }: IGenericTable<T>): JSX.Element {
   return (
-    <table className="table-auto gap-2">
+    <table className="table-auto border-spacing-2">
       <thead>
-        {columnsConfig.map((item) => (
-          <th>{item.headerName}</th>
-        ))}
+        <tr className="border-b-2">
+          {columnsConfig.map((item) => (
+            <th className="text-center p-3">{item.headerName}</th>
+          ))}
+        </tr>
       </thead>
       <tbody>
         {rows.data.map((row) => (
-          <tr key={keyGenerator(row)}>
+          <tr key={keyGenerator(row)} className="border-b">
             {columnsConfig.map((column) => (
-              <td>{column.renderData(row)}</td>
+              <td className="text-center p-3">{column.renderData(row)}</td>
             ))}
           </tr>
         ))}
