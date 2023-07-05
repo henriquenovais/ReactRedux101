@@ -12,7 +12,7 @@ export function GenericTable<T>({
   keyGenerator,
 }: IGenericTable<T>): JSX.Element {
   return (
-    <table>
+    <table className="table-auto gap-2">
       <thead>
         {columnsConfig.map((item) => (
           <th>{item.headerName}</th>
