@@ -1,16 +1,16 @@
 import { TableColumn, TableData } from "../types/genericComponents";
 
-interface IGenericTable<T> {
+interface ITable<T> {
   keyGenerator: (element: T) => string;
   columnsConfig: TableColumn<T>[];
   rows: TableData<T>;
 }
 
-export function GenericTable<T>({
+function Table<T>({
   columnsConfig,
   rows,
   keyGenerator,
-}: IGenericTable<T>): JSX.Element {
+}: ITable<T>): JSX.Element {
   return (
     <table className="table-auto border-spacing-2">
       <thead>
@@ -33,4 +33,4 @@ export function GenericTable<T>({
   );
 }
 
-export default GenericTable;
+export default Table;

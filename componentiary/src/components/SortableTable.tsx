@@ -1,7 +1,17 @@
 import { FC } from "react";
 import { Fruit } from "../types/tablePage";
-import { TableColumn, TableData } from "../types/genericComponents";
+import {
+  SortableTableColumn,
+  TableColumn,
+  TableData,
+} from "../types/genericComponents";
 import Table from "../components/Table";
+
+interface ISortableTable<T> {
+  keyGenerator: (element: T) => string;
+  sortableColumnConfig: SortableTableColumn<T>;
+  rows: TableData<T>;
+}
 
 const fruitList: Fruit[] = [
   { color: "bg-yellow-300", name: "Pineapple", tasteScore: 5 },
@@ -28,10 +38,11 @@ const fruitHeaders: TableColumn<Fruit>[] = [
   },
 ];
 
-const TablePage: FC = () => {
-  const keyGenerator = (fruit: Fruit): string =>
-    `${fruit.name}-${fruit.color}-${fruit.tasteScore}`;
-
+function SortableTable<T>({
+  sortableColumnConfig,
+  rows,
+  keyGenerator,
+}: ISortableTable<T>): JSX.Element {
   return (
     <div>
       <Table
@@ -41,6 +52,6 @@ const TablePage: FC = () => {
       />
     </div>
   );
-};
+}
 
-export default TablePage;
+export default SortableTable;

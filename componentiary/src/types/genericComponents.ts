@@ -14,6 +14,10 @@ export interface TableColumn<T> {
   renderData: (input: T) => string | number | JSX.Element;
 }
 
+export interface SortableTableColumn<T> extends TableColumn<T> {
+  renderHeader?: (input: T) => string | number | JSX.Element;
+}
+
 export interface TableData<T> {
   data: Array<T>;
 }
