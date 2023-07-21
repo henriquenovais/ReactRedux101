@@ -15,15 +15,15 @@ const fruitRows: TableData<Fruit> = {
 
 const fruitHeaders: TableColumn<Fruit>[] = [
   {
-    headerName: "Name",
+    header: "Name",
     renderData: (fruit: Fruit) => fruit.name,
   },
   {
-    headerName: "Color",
+    header: "Color",
     renderData: (fruit: Fruit) => <div className={`p-3 m-2 ${fruit.color}`} />,
   },
   {
-    headerName: "Deliciousness Score",
+    header: "Deliciousness Score",
     renderData: (fruit: Fruit) => fruit.tasteScore,
   },
 ];

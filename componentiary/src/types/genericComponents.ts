@@ -10,12 +10,15 @@ export interface DropdownItem {
 }
 
 export interface TableColumn<T> {
-  headerName: string;
+  header: string | number | JSX.Element;
   renderData: (input: T) => string | number | JSX.Element;
 }
 
 export interface SortableTableColumn<T> extends TableColumn<T> {
-  renderHeader?: (input: T) => string | number | JSX.Element;
+  renderHeader?: (
+    input: string | number | JSX.Element
+  ) => string | number | JSX.Element;
+  sortData?: (inputData: TableData<T>) => TableData<T>;
 }
 
 export interface TableData<T> {
