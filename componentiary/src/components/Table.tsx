@@ -17,7 +17,9 @@ function Table<T>({
         <thead>
           <tr className="border-b-2">
             {columnsConfig.map((item) => (
-              <th className="text-center p-3">{item.header}</th>
+              <th key={JSON.stringify(item.header)} className="text-center p-3">
+                {item.header}
+              </th>
             ))}
           </tr>
         </thead>
@@ -25,7 +27,9 @@ function Table<T>({
           {rows.data.map((row) => (
             <tr key={keyGenerator(row)} className="border-b">
               {columnsConfig.map((column) => (
-                <td className="text-center p-3">{column.renderData(row)}</td>
+                <td key={keyGenerator(row)} className="text-center p-3">
+                  {column.renderData(row)}
+                </td>
               ))}
             </tr>
           ))}
