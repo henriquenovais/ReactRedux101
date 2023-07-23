@@ -68,11 +68,11 @@ const TablePage: FC = () => {
         rows={fruitRows}
         keyGenerator={keyGenerator}
       />
-      {/* <SortableTable<Fruit>
+      <SortableTable<Fruit>
         sortableColumnConfig={sortableFruitHeaders}
         rows={fruitRows}
         keyGenerator={keyGenerator}
-      /> */}
+      />
     </div>
   );
 };

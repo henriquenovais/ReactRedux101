@@ -16,8 +16,8 @@ function Table<T>({
       <table className="table-auto border-spacing-2">
         <thead>
           <tr className="border-b-2">
-            {columnsConfig.map((item) => (
-              <th key={JSON.stringify(item.header)} className="text-center p-3">
+            {columnsConfig.map((item, index) => (
+              <th key={`header-${index}`} className="text-center p-3">
                 {item.header}
               </th>
             ))}
@@ -26,8 +26,11 @@ function Table<T>({
         <tbody>
           {rows.data.map((row) => (
             <tr key={keyGenerator(row)} className="border-b">
-              {columnsConfig.map((column) => (
-                <td key={keyGenerator(row)} className="text-center p-3">
+              {columnsConfig.map((column, index) => (
+                <td
+                  key={`${keyGenerator(row)}-${index}`}
+                  className="text-center p-3"
+                >
                   {column.renderData(row)}
                 </td>
               ))}
