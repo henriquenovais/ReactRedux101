@@ -1,9 +1,4 @@
-import {
-  SortableTableColumn,
-  TableColumn,
-  TableData,
-} from "../types/genericComponents";
-import Table from "../components/Table";
+import { SortableTableColumn, TableData } from "../types/genericComponents";
 
 interface ISortableTable<T> {
   keyGenerator: (element: T) => string;
@@ -16,20 +11,40 @@ function SortableTable<T>({
   rows,
   keyGenerator,
 }: ISortableTable<T>): JSX.Element {
-  const tableColumn: TableColumn<T>[] = sortableColumnConfig.map(
-    (sortableConfig) => ({
-      label: sortableConfig.label,
-      renderData: sortableConfig.renderData,
-      renderHeader: sortableConfig.renderHeader,
-    })
-  );
-
   return (
-    <Table<T>
-      columnsConfig={tableColumn}
-      rows={rows}
-      keyGenerator={keyGenerator}
-    />
+    <div>
+      <table className="table-auto border-spacing-2">
+        <thead>
+          <tr className="border-b-2">
+            {sortableColumnConfig.map((item, index) => {
+              if (item.renderHeader) {
+                return item.renderHeader(item.label);
+              }
+
+              return (
+                <th key={`header-${index}`} className="text-center p-3">
+                  {item.label}
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.data.map((row) => (
+            <tr key={keyGenerator(row)} className="border-b">
+              {sortableColumnConfig.map((column, index) => (
+                <td
+                  key={`${keyGenerator(row)}-${index}`}
+                  className="text-center p-3"
+                >
+                  {column.renderData(row)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
