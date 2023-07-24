@@ -62,17 +62,23 @@ const TablePage: FC = () => {
     `${fruit.name}-${fruit.color}-${fruit.tasteScore}`;
 
   return (
-    <div>
-      <Table<Fruit>
-        columnsConfig={fruitHeaders}
-        rows={fruitRows}
-        keyGenerator={keyGenerator}
-      />
-      <SortableTable<Fruit>
-        sortableColumnConfig={sortableFruitHeaders}
-        rows={fruitRows}
-        keyGenerator={keyGenerator}
-      />
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-col items-center">
+        <h3>Unsortable</h3>
+        <Table<Fruit>
+          columnsConfig={fruitHeaders}
+          rows={fruitRows}
+          keyGenerator={keyGenerator}
+        />
+      </div>
+      <div className="flex flex-col items-center">
+        <h3>Sortable</h3>
+        <SortableTable<Fruit>
+          sortableColumnConfig={sortableFruitHeaders}
+          rows={fruitRows}
+          keyGenerator={keyGenerator}
+        />
+      </div>
     </div>
   );
 };
