@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { Fruit } from "../types/tablePage";
 import {
   SortableTableColumn,
@@ -20,39 +20,41 @@ const fruitRows: TableData<Fruit> = {
 
 const fruitHeaders: TableColumn<Fruit>[] = [
   {
-    header: "Name",
+    label: "Name",
     renderData: (fruit: Fruit) => fruit.name,
   },
   {
-    header: "Color",
+    label: "Color",
     renderData: (fruit: Fruit) => <div className={`p-3 m-2 ${fruit.color}`} />,
   },
   {
-    header: "Deliciousness Score",
+    label: "Deliciousness Score",
     renderData: (fruit: Fruit) => fruit.tasteScore,
   },
 ];
 
 const sortableFruitHeaders: SortableTableColumn<Fruit>[] = [
   {
-    header: "Name",
+    label: "Name",
     renderData: (fruit: Fruit) => fruit.name,
-    renderHeader: (header: string | JSX.Element) => (
-      <Fragment key={JSON.stringify(header)}>{header}</Fragment>
+    renderHeader: (header: string): JSX.Element => (
+      <th key={header}>{header}</th>
     ),
   },
   {
-    header: "Color",
+    label: "Color",
     renderData: (fruit: Fruit) => <div className={`p-3 m-2 ${fruit.color}`} />,
-    renderHeader: (header: string | JSX.Element) => (
-      <Fragment key={JSON.stringify(header)}>{header}</Fragment>
+    renderHeader: (header: string): JSX.Element => (
+      <th key={header} className="bg-red-600">
+        {header}
+      </th>
     ),
   },
   {
-    header: "Deliciousness Score",
+    label: "Deliciousness Score",
     renderData: (fruit: Fruit) => fruit.tasteScore,
-    renderHeader: (header: string | JSX.Element) => (
-      <Fragment key={JSON.stringify(header)}>{header}</Fragment>
+    renderHeader: (header: string): JSX.Element => (
+      <th key={header}>{header}</th>
     ),
   },
 ];

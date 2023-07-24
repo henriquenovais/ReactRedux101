@@ -17,23 +17,15 @@ function SortableTable<T>({
   keyGenerator,
 }: ISortableTable<T>): JSX.Element {
   const tableColumn: TableColumn<T>[] = sortableColumnConfig.map(
-    (sortableConfig) => {
-      if (sortableConfig.renderHeader) {
-        return {
-          header: sortableConfig.renderHeader(sortableConfig.header),
-          renderData: sortableConfig.renderData,
-        };
-      }
-
-      return {
-        header: sortableConfig.header,
-        renderData: sortableConfig.renderData,
-      };
-    }
+    (sortableConfig) => ({
+      label: sortableConfig.label,
+      renderData: sortableConfig.renderData,
+      renderHeader: sortableConfig.renderHeader,
+    })
   );
 
   return (
-    <Table
+    <Table<T>
       columnsConfig={tableColumn}
       rows={rows}
       keyGenerator={keyGenerator}
