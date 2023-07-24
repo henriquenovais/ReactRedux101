@@ -40,6 +40,7 @@ const sortableFruitHeaders: SortableTableColumn<Fruit>[] = [
     renderHeader: (header: string): JSX.Element => (
       <th key={header}>{header}</th>
     ),
+    sortValue: (data: Fruit) => data.name,
   },
   {
     label: "Color",
@@ -56,6 +57,7 @@ const sortableFruitHeaders: SortableTableColumn<Fruit>[] = [
     renderHeader: (header: string): JSX.Element => (
       <th key={header}>{header}</th>
     ),
+    sortValue: (data: Fruit) => data.tasteScore,
   },
 ];
 

@@ -16,7 +16,7 @@ export interface TableColumn<T> {
 }
 
 export interface SortableTableColumn<T> extends TableColumn<T> {
-  sortData?: (inputData: TableData<T>) => TableData<T>;
+  sortValue?: (inputData: T) => number | string;
 }
 
 export interface TableData<T> {
