@@ -18,7 +18,3 @@ export interface SortableTableColumn<T> extends TableColumn<T> {
   renderHeader: (input: string) => string | JSX.Element;
   sortValue?: (inputData: T) => number | string;
 }
-
-export interface TableData<T> {
-  data: Array<T>;
-}

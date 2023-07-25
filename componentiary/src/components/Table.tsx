@@ -1,9 +1,9 @@
-import { TableColumn, TableData } from "../types/genericComponents";
+import { TableColumn } from "../types/genericComponents";
 
 interface ITable<T> {
   keyGenerator: (element: T) => string;
   columnsConfig: TableColumn<T>[];
-  rows: TableData<T>;
+  rows: Array<T>;
 }
 
 function Table<T>({
@@ -24,7 +24,7 @@ function Table<T>({
           </tr>
         </thead>
         <tbody>
-          {rows.data.map((row) => (
+          {rows.map((row) => (
             <tr key={keyGenerator(row)} className="border-b">
               {columnsConfig.map((column, index) => (
                 <td
