@@ -1,5 +1,6 @@
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, Fragment } from "react";
 import { SortableTableColumn } from "../types/genericComponents";
+import { MdSort, MdFilterList } from "react-icons/md";
 
 interface ISortableTable<T> {
   keyGenerator: (element: T) => string;
@@ -14,6 +15,40 @@ function SortableTable<T>({
 }: ISortableTable<T>): JSX.Element {
   const [sortedColumn, setSortedColumn] = useState<string | null>(null);
   const [sortedOrder, setSortedOrder] = useState<"asc" | "desc" | null>(null);
+
+  const getSortIcon = (
+    columnLabel: string,
+    sortedColumn: string,
+    sortedOrder: "asc" | "desc" | null
+  ): JSX.Element => {
+    if (columnLabel === sortedColumn) {
+      if (sortedOrder === "asc") {
+        return (
+          <div className="scale-y-[-1]">
+            <MdSort />
+          </div>
+        );
+      } else if (sortedOrder === "desc") {
+        return (
+          <div>
+            <MdSort />
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <MdFilterList />
+          </div>
+        );
+      }
+    }
+
+    return (
+      <div>
+        <MdFilterList />
+      </div>
+    );
+  };
 
   const handleHeaderClick = (event: MouseEvent, columnLabel: string) => {
     event.preventDefault();
@@ -64,9 +99,6 @@ function SortableTable<T>({
 
   return (
     <div>
-      <span>
-        Column: {sortedColumn} - Order: {sortedOrder}
-      </span>
       <table className="table-auto border-spacing-2">
         <thead>
           <tr className="border-b-2">

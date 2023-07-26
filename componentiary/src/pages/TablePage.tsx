@@ -37,9 +37,7 @@ const sortableFruitHeaders: SortableTableColumn<Fruit>[] = [
   {
     label: "Color",
     renderData: (fruit: Fruit) => <div className={`p-3 m-2 ${fruit.color}`} />,
-    renderHeader: (header: string): JSX.Element => (
-      <div className="bg-red-600">{header}</div>
-    ),
+    renderHeader: (header: string): JSX.Element => <div>{header}</div>,
   },
   {
     label: "Deliciousness Score",
