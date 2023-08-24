@@ -1,6 +1,6 @@
-import { useState, MouseEvent, Fragment } from "react";
+import { useState, MouseEvent } from "react";
 import { SortableTableColumn } from "../types/genericComponents";
-import { MdSort, MdFilterList } from "react-icons/md";
+import { HiSortAscending, HiSortDescending, HiMenuAlt1 } from "react-icons/hi";
 
 interface ISortableTable<T> {
   keyGenerator: (element: T) => string;
@@ -18,36 +18,20 @@ function SortableTable<T>({
 
   const getSortIcon = (
     columnLabel: string,
-    sortedColumn: string,
+    sortedColumn: string | null,
     sortedOrder: "asc" | "desc" | null
   ): JSX.Element => {
     if (columnLabel === sortedColumn) {
       if (sortedOrder === "asc") {
-        return (
-          <div className="scale-y-[-1]">
-            <MdSort />
-          </div>
-        );
+        return <HiSortDescending />;
       } else if (sortedOrder === "desc") {
-        return (
-          <div>
-            <MdSort />
-          </div>
-        );
+        return <HiSortAscending />;
       } else {
-        return (
-          <div>
-            <MdFilterList />
-          </div>
-        );
+        return <HiMenuAlt1 />;
       }
     }
 
-    return (
-      <div>
-        <MdFilterList />
-      </div>
-    );
+    return <HiMenuAlt1 />;
   };
 
   const handleHeaderClick = (event: MouseEvent, columnLabel: string) => {
@@ -69,7 +53,7 @@ function SortableTable<T>({
           break;
         case "desc":
           setSortedOrder(null);
-          setSortedColumn(null);
+          setSortedColumn(columnLabel);
           break;
       }
     }
@@ -112,6 +96,8 @@ function SortableTable<T>({
                   {item.renderHeader
                     ? item.renderHeader(item.label)
                     : item.label}
+                  {item.sortValue &&
+                    getSortIcon(item.label, sortedColumn, sortedOrder)}
                 </th>
               );
             })}
