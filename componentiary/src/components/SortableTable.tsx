@@ -1,6 +1,7 @@
 import { useState, MouseEvent } from "react";
 import { SortableTableColumn } from "../types/genericComponents";
 import { HiSortAscending, HiSortDescending, HiMenuAlt1 } from "react-icons/hi";
+import { classNamer } from "../utils/Strings";
 
 interface ISortableTable<T> {
   keyGenerator: (element: T) => string;
@@ -39,7 +40,7 @@ function SortableTable<T>({
     event.stopPropagation();
 
     if (sortedColumn !== columnLabel) {
-      setSortedOrder(null);
+      setSortedOrder("asc");
       setSortedColumn(columnLabel);
     } else {
       switch (sortedOrder) {
@@ -91,7 +92,10 @@ function SortableTable<T>({
                 <th
                   key={`header-${index}`}
                   onClick={(e) => handleHeaderClick(e, item.label)}
-                  className="text-center p-3"
+                  className={classNamer(
+                    { "cursor-pointer": !!item.sortValue },
+                    "inline-flex items-center gap-x-1.5 text-center p-3"
+                  )}
                 >
                   {item.renderHeader
                     ? item.renderHeader(item.label)
