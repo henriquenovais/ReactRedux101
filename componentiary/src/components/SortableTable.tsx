@@ -92,16 +92,20 @@ function SortableTable<T>({
                 <th
                   key={`header-${index}`}
                   onClick={(e) => handleHeaderClick(e, item.label)}
-                  className={classNamer(
-                    { "cursor-pointer": !!item.sortValue },
-                    "inline-flex items-center gap-x-1.5 text-center p-3"
-                  )}
+                  className={classNamer({ "cursor-pointer": !!item.sortValue })}
                 >
-                  {item.renderHeader
-                    ? item.renderHeader(item.label)
-                    : item.label}
-                  {item.sortValue &&
-                    getSortIcon(item.label, sortedColumn, sortedOrder)}
+                  <div
+                    className={classNamer(
+                      {},
+                      "flex items-center gap-x-1.5 text-center p-3"
+                    )}
+                  >
+                    {item.renderHeader
+                      ? item.renderHeader(item.label)
+                      : item.label}{" "}
+                    {item.sortValue &&
+                      getSortIcon(item.label, sortedColumn, sortedOrder)}
+                  </div>
                 </th>
               );
             })}
@@ -113,7 +117,7 @@ function SortableTable<T>({
               {sortableColumnConfig.map((column, index) => (
                 <td
                   key={`${keyGenerator(row)}-${index}`}
-                  className="text-center p-3"
+                  className="flex-row text-center p-3"
                 >
                   {column.renderData(row)}
                 </td>
