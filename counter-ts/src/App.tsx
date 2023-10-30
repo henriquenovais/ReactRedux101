@@ -13,8 +13,8 @@ function App() {
   };
 
   return (
-    <div className="h-96 w-full font-mono flex flex-col items-center gap-4">
-      <h1>Counter is: {counter}</h1>
+    <div className="h-96 w-full font-mono text-lg flex flex-col items-center gap-4 ">
+      <h1 className="font-semibold">Counter is: {counter}</h1>
       <button
         className="border-4 border-blue-300 w-32 h-8 bg-blue-300"
         onClick={() => count(true)}
@@ -34,7 +34,9 @@ function App() {
           addByAmount(amount);
         }}
       >
-        <label>Type specific amount to add to counter:</label>
+        <label className="font-semibold">
+          Type specific amount to add to counter:
+        </label>
         <input
           className="border-4 border-blue-300 w-32 h-8"
           type="number"
