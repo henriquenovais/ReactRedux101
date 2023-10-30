@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 
-function Counter() {
+const Counter: FC = () => {
   const [counter, setCounter] = useState<number>(0);
   const [amount, setAmount] = useState<number>(0);
 
@@ -52,6 +52,6 @@ function Counter() {
       </form>
     </div>
   );
-}
+};
 
 export default Counter;
