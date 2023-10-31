@@ -6,38 +6,15 @@ interface CounterState {
 }
 
 interface CounterAction {
-  type: "increment" | "decrement" | "addAmount" | "updateAmount";
-  newAmount?: number;
+  setCounter: number;
+  setAmount: number;
 }
 
 const reducer = (state: CounterState, action: CounterAction): CounterState => {
-  const newAmount = action.newAmount ? action.newAmount : 0;
-
-  switch (action.type) {
-    case "addAmount":
-      return {
-        counter: state.counter + state.amount,
-        amount: 0,
-      };
-
-    case "increment":
-      return {
-        counter: state.counter++,
-        amount: state.amount,
-      };
-
-    case "decrement":
-      return {
-        counter: state.counter--,
-        amount: state.amount,
-      };
-
-    default:
-      return {
-        counter: state.counter,
-        amount: newAmount,
-      };
-  }
+  return {
+    counter: action.setCounter,
+    amount: action.setAmount,
+  };
 };
 
 const CounterWithRedux: FC = () => {
@@ -53,13 +30,17 @@ const CounterWithRedux: FC = () => {
       <h1 className="font-semibold">Counter is: {state.counter}</h1>
       <button
         className="border-4 border-blue-300 w-32 h-8 bg-blue-300"
-        onClick={() => dispatch({ type: "increment" })}
+        onClick={() =>
+          dispatch({ setCounter: state.counter + 1, setAmount: state.amount })
+        }
       >
         Increment
       </button>
       <button
         className="border-4 border-blue-300 w-32 h-8 bg-blue-300"
-        onClick={() => dispatch({ type: "decrement" })}
+        onClick={() =>
+          dispatch({ setCounter: state.counter - 1, setAmount: state.amount })
+        }
       >
         Decrement
       </button>
@@ -69,7 +50,7 @@ const CounterWithRedux: FC = () => {
           e.preventDefault();
           e.stopPropagation();
 
-          dispatch({ type: "addAmount" });
+          dispatch({ setCounter: state.counter + state.amount, setAmount: 0 });
         }}
       >
         <label className="font-semibold">
@@ -77,15 +58,16 @@ const CounterWithRedux: FC = () => {
         </label>
         <input
           className="border-4 border-blue-300 w-32 h-8"
-          type="number"
+          type="tel"
+          pattern="-?[0-9]+"
           value={state.amount}
           onChange={(e) => {
             e.preventDefault();
             e.stopPropagation();
 
             dispatch({
-              type: "updateAmount",
-              newAmount: parseInt(e.target.value),
+              setCounter: state.counter,
+              setAmount: e.target.value ? parseInt(e.target.value) : 0,
             });
           }}
         />
