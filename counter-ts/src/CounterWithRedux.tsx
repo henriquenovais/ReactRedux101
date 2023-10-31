@@ -18,12 +18,10 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
 };
 
 const CounterWithRedux: FC = () => {
-  const initialState: CounterState = {
+  const [state, dispatch] = useReducer(reducer, {
     counter: 0,
     amount: 0,
-  };
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  });
 
   return (
     <div className="h-96 w-full font-mono text-lg flex flex-col items-center gap-4 ">
