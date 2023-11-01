@@ -6,15 +6,46 @@ interface CounterState {
 }
 
 interface CounterAction {
-  setCounter: number;
-  setAmount: number;
+  type: CounterActionType;
+  payload?: number;
 }
 
+type CounterActionType =
+  | "increment"
+  | "decrement"
+  | "setAmount"
+  | "incrementByAmount";
+
 const reducer = (state: CounterState, action: CounterAction): CounterState => {
-  return {
-    counter: action.setCounter,
-    amount: action.setAmount,
-  };
+  if (
+    (action.type === "setAmount" || action.type === "incrementByAmount") &&
+    !action.payload === undefined
+  ) {
+    throw Error("This action requires a payload");
+  } else {
+    switch (action.type) {
+      case "increment":
+        return {
+          counter: state.counter++,
+          amount: state.amount,
+        };
+      case "decrement":
+        return {
+          counter: state.counter--,
+          amount: state.amount,
+        };
+      case "setAmount":
+        return {
+          counter: state.counter,
+          amount: action.payload!,
+        };
+      case "incrementByAmount":
+        return {
+          counter: state.counter + state.amount,
+          amount: 0,
+        };
+    }
+  }
 };
 
 const CounterWithRedux: FC = () => {
@@ -28,17 +59,13 @@ const CounterWithRedux: FC = () => {
       <h1 className="font-semibold">Counter is: {state.counter}</h1>
       <button
         className="border-4 border-blue-300 w-32 h-8 bg-blue-300"
-        onClick={() =>
-          dispatch({ setCounter: state.counter + 1, setAmount: state.amount })
-        }
+        onClick={() => dispatch({ type: "increment" })}
       >
         Increment
       </button>
       <button
         className="border-4 border-blue-300 w-32 h-8 bg-blue-300"
-        onClick={() =>
-          dispatch({ setCounter: state.counter - 1, setAmount: state.amount })
-        }
+        onClick={() => dispatch({ type: "decrement" })}
       >
         Decrement
       </button>
@@ -48,7 +75,7 @@ const CounterWithRedux: FC = () => {
           e.preventDefault();
           e.stopPropagation();
 
-          dispatch({ setCounter: state.counter + state.amount, setAmount: 0 });
+          dispatch({ type: "incrementByAmount", payload: state.amount });
         }}
       >
         <label className="font-semibold">
@@ -64,8 +91,8 @@ const CounterWithRedux: FC = () => {
             e.stopPropagation();
 
             dispatch({
-              setCounter: state.counter,
-              setAmount: e.target.value ? parseInt(e.target.value) : 0,
+              type: "setAmount",
+              payload: e.target.value ? parseInt(e.target.value) : 0,
             });
           }}
         />
