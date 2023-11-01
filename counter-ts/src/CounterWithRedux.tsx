@@ -89,7 +89,7 @@ const CounterWithRedux: FC = () => {
           onChange={(e) => {
             e.preventDefault();
             e.stopPropagation();
-
+            //state.amount has to be a string for this input to work
             dispatch({
               type: "setAmount",
               payload: e.target.value ? parseInt(e.target.value) : 0,
