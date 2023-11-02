@@ -26,11 +26,13 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
     switch (action.type) {
       case "increment":
         return {
+          ...state,
           counter: state.counter++,
           amount: state.amount,
         };
       case "decrement":
         return {
+          ...state,
           counter: state.counter--,
           amount: state.amount,
         };
@@ -39,11 +41,13 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
           throw Error("Wrong payload type: must be a string");
         }
         return {
+          ...state,
           counter: state.counter,
           amount: action.payload!,
         };
       case "incrementByAmount":
         return {
+          ...state,
           counter: state.counter + parseInt(state.amount),
           amount: "",
         };
