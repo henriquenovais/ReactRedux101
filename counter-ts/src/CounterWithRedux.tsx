@@ -2,12 +2,12 @@ import { FC, useReducer } from "react";
 
 interface CounterState {
   counter: number;
-  amount: number;
+  amount: string;
 }
 
 interface CounterAction {
   type: CounterActionType;
-  payload?: number;
+  payload?: number | string;
 }
 
 type CounterActionType =
@@ -35,14 +35,17 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
           amount: state.amount,
         };
       case "setAmount":
+        if (!action.payload || typeof action.payload !== "string") {
+          throw Error("Wrong payload type: must be a string");
+        }
         return {
           counter: state.counter,
           amount: action.payload!,
         };
       case "incrementByAmount":
         return {
-          counter: state.counter + state.amount,
-          amount: 0,
+          counter: state.counter + parseInt(state.amount),
+          amount: "",
         };
     }
   }
@@ -51,7 +54,7 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
 const CounterWithRedux: FC = () => {
   const [state, dispatch] = useReducer(reducer, {
     counter: 0,
-    amount: 0,
+    amount: "",
   });
 
   return (
@@ -75,7 +78,10 @@ const CounterWithRedux: FC = () => {
           e.preventDefault();
           e.stopPropagation();
 
-          dispatch({ type: "incrementByAmount", payload: state.amount });
+          dispatch({
+            type: "incrementByAmount",
+            payload: parseInt(state.amount),
+          });
         }}
       >
         <label className="font-semibold">
@@ -92,7 +98,7 @@ const CounterWithRedux: FC = () => {
             //state.amount has to be a string for this input to work
             dispatch({
               type: "setAmount",
-              payload: e.target.value ? parseInt(e.target.value) : 0,
+              payload: e.target.value,
             });
           }}
         />
