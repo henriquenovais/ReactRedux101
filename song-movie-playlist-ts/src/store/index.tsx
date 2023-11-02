@@ -68,3 +68,5 @@ const store = configureStore({
 // const finalState = store.getState();
 
 // console.log("Final state >>>>>>>>", finalState);
+
+export { store };
