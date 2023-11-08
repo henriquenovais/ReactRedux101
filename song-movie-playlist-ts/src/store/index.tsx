@@ -70,3 +70,4 @@ const store = configureStore({
 // console.log("Final state >>>>>>>>", finalState);
 
 export { store };
+export const { addSong } = songsSlice.actions;
