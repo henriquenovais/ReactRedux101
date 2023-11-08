@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4">
       <div className="flex flex-col items-center justify-center w-full h-16">
         <button
           className="w-48 h-8 bg-orange-700 rounded-lg text-center text-xl text-white font-bold"
@@ -29,11 +29,12 @@ function App() {
         </button>
       </div>
 
-      <div className="h-0.5 w-full bg-blue-900" />
+      <div className="h-0.5 w-full bg-gray-200" />
       <SongPlaylist
         songs={songs}
         addSong={(value) => setSongs((current) => current.concat([value]))}
       />
+      <div className="h-0.5 w-full bg-gray-200" />
       <MoviePlaylist
         movies={movies}
         addMovie={(value) => setMovies((current) => current.concat([value]))}

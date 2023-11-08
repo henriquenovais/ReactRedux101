@@ -43,13 +43,13 @@ const MoviePlaylist: FC<IMoviePlaylist> = ({ addMovie, movies }) => {
   return (
     <div className="w-fill flex flex-col items-center gap-3">
       <div className="w-fill flex flex-row items-center justify-center gap-3">
-        <h1 className="text-4xl">Songs Playlist</h1>
+        <h1 className="text-4xl">Movies Playlist</h1>
         {!isAddMovie && (
           <button
             className="w-24 bg-orange-700 rounded-lg text-center text-white font-bold"
             onClick={(e) => handleAddMovieClick(e)}
           >
-            Add song
+            Add movie
           </button>
         )}
       </div>
@@ -67,7 +67,7 @@ const MoviePlaylist: FC<IMoviePlaylist> = ({ addMovie, movies }) => {
               className="w-48 h-8 bg-orange-700 rounded-lg text-center text-white font-bold"
               onClick={(e) => handleSubmit(e)}
             >
-              Add new song
+              Add new movie
             </button>
           </form>
         </div>
