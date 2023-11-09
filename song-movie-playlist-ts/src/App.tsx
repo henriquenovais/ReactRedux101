@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import { store } from "./store";
+import { resetMovies, resetSongs } from "./store";
 import SongPlaylist from "./components/SongPlaylist";
 import MoviePlaylist from "./components/MoviePlaylist";
 
 function App() {
-  const [songs, setSongs] = useState<Array<string>>([]);
-  const [movies, setMovies] = useState<Array<string>>([]);
-
   const handleResetClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     event.preventDefault();
     event.stopPropagation();
 
-    setSongs([]);
-    setMovies([]);
+    resetSongs();
+    resetMovies();
   };
 
   return (
@@ -32,10 +29,7 @@ function App() {
       <div className="h-0.5 w-full bg-gray-200" />
       <SongPlaylist />
       <div className="h-0.5 w-full bg-gray-200" />
-      <MoviePlaylist
-        movies={movies}
-        addMovie={(value) => setMovies((current) => current.concat([value]))}
-      />
+      <MoviePlaylist />
     </div>
   );
 }

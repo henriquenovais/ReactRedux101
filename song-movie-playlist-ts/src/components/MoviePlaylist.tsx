@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { MoviesPlaylistState, addMovie } from "../store";
 
-interface IMoviePlaylist {
-  addMovie: (input: string) => void;
-  movies: string[];
-}
+const MoviePlaylist: FC = () => {
+  const dispatch = useDispatch();
+  const movies = useSelector((state: MoviesPlaylistState) => state.movies);
 
-const MoviePlaylist: FC<IMoviePlaylist> = ({ addMovie, movies }) => {
   const [isAddMovie, setIsAddMovie] = useState<boolean>(false);
   const [movieName, setMovieName] = useState<string>("");
 
@@ -35,7 +35,7 @@ const MoviePlaylist: FC<IMoviePlaylist> = ({ addMovie, movies }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    addMovie(movieName);
+    dispatch(addMovie(movieName));
     setMovieName("");
     setIsAddMovie(false);
   };

@@ -1,10 +1,10 @@
 import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addSong } from "../store";
+import { SongsPlaylistState, addSong } from "../store";
 
 const SongPlaylist: FC = () => {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => state.songs);
+  const songs = useSelector((state: SongsPlaylistState) => state.songs);
 
   const [isAddSong, setIsAddSong] = useState<boolean>(false);
   const [songName, setSongName] = useState<string>("");
