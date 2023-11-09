@@ -74,7 +74,7 @@ const MoviePlaylist: FC<IMoviePlaylist> = ({ addMovie, movies }) => {
       )}
       <div className="flex flex-col items-center">
         {movies.map((current) => (
-          <span>{current}</span>
+          <span key={current}>{current}</span>
         ))}
       </div>
     </div>

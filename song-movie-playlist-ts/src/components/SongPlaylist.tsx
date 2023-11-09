@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addSong } from "../store";
 
-interface ISongPlaylist {
-  addSong: (input: string) => void;
-  songs: string[];
-}
+const SongPlaylist: FC = () => {
+  const dispatch = useDispatch();
+  const songs = useSelector((state) => state.songs);
 
-const SongPlaylist: FC<ISongPlaylist> = ({ addSong, songs }) => {
   const [isAddSong, setIsAddSong] = useState<boolean>(false);
   const [songName, setSongName] = useState<string>("");
 
@@ -35,7 +35,7 @@ const SongPlaylist: FC<ISongPlaylist> = ({ addSong, songs }) => {
     event.preventDefault();
     event.stopPropagation();
 
-    addSong(songName);
+    dispatch(addSong(songName as never));
     setSongName("");
     setIsAddSong(false);
   };
@@ -73,8 +73,8 @@ const SongPlaylist: FC<ISongPlaylist> = ({ addSong, songs }) => {
         </div>
       )}
       <div className="flex flex-col items-center">
-        {songs.map((current) => (
-          <span>{current}</span>
+        {(songs as string[]).map((current) => (
+          <span key={current}>{current}</span>
         ))}
       </div>
     </div>

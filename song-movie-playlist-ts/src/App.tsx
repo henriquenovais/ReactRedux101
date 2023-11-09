@@ -30,10 +30,7 @@ function App() {
       </div>
 
       <div className="h-0.5 w-full bg-gray-200" />
-      <SongPlaylist
-        songs={songs}
-        addSong={(value) => setSongs((current) => current.concat([value]))}
-      />
+      <SongPlaylist />
       <div className="h-0.5 w-full bg-gray-200" />
       <MoviePlaylist
         movies={movies}
