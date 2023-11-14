@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MoviesPlaylistState, addMovie } from "../store";
+import { MoviesPlaylistState } from "../store";
 
 const MoviePlaylist: FC = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const MoviePlaylist: FC = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch(addMovie(movieName));
+    dispatch({ type: "movie/addMovie", payload: movieName });
     setMovieName("");
     setIsAddMovie(false);
   };

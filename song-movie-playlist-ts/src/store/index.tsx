@@ -9,7 +9,7 @@ export interface SongsPlaylistState {
 
 const songsSlice = createSlice({
   name: "song",
-  initialState: [] as string[],
+  initialState: new Array<string>(),
   reducers: {
     addSong(state, action: PayloadAction<string>) {
       state.push(action.payload);
@@ -24,19 +24,15 @@ export interface MoviesPlaylistState {
   movies: string[];
 }
 
-const initialStateMovies: MoviesPlaylistState = {
-  movies: [],
-};
-
 const moviesSlice = createSlice({
   name: "movie",
-  initialState: initialStateMovies,
+  initialState: new Array<string>(),
   reducers: {
     addMovie(state, action: PayloadAction<string>) {
-      state.movies.push(action.payload);
+      state.push(action.payload);
     },
     resetMovies(state) {
-      state.movies = [];
+      state = [];
     },
   },
 });
@@ -44,6 +40,7 @@ const moviesSlice = createSlice({
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
+    movies: moviesSlice.reducer,
   },
 });
 
