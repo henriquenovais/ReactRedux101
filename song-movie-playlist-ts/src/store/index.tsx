@@ -3,30 +3,30 @@ export interface SongsPlaylistState {
   songs: string[];
 }
 
+// const initialStateSongs: SongsPlaylistState = {
+//   songs: [],
+// };
+
+const songsSlice = createSlice({
+  name: "song",
+  initialState: [] as string[],
+  reducers: {
+    addSong(state, action: PayloadAction<string>) {
+      state.push(action.payload);
+    },
+    resetSongs(state) {
+      state = [];
+    },
+  },
+});
+
 export interface MoviesPlaylistState {
   movies: string[];
 }
 
-const initialStateSongs: SongsPlaylistState = {
-  songs: [],
-};
-
 const initialStateMovies: MoviesPlaylistState = {
   movies: [],
 };
-
-const songsSlice = createSlice({
-  name: "song",
-  initialState: initialStateSongs,
-  reducers: {
-    addSong(state, action: PayloadAction<string>) {
-      state.songs.push(action.payload);
-    },
-    resetSongs(state) {
-      state.songs = [];
-    },
-  },
-});
 
 const moviesSlice = createSlice({
   name: "movie",
@@ -44,7 +44,6 @@ const moviesSlice = createSlice({
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
-    movies: moviesSlice.reducer,
   },
 });
 

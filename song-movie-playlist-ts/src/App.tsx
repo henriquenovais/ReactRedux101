@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { resetMovies, resetSongs } from "./store";
 import SongPlaylist from "./components/SongPlaylist";
-import MoviePlaylist from "./components/MoviePlaylist";
+// import MoviePlaylist from "./components/MoviePlaylist";
 
 function App() {
   const handleResetClick = (
@@ -29,7 +29,7 @@ function App() {
       <div className="h-0.5 w-full bg-gray-200" />
       <SongPlaylist />
       <div className="h-0.5 w-full bg-gray-200" />
-      <MoviePlaylist />
+      {/* <MoviePlaylist /> */}
     </div>
   );
 }

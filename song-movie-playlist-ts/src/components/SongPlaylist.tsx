@@ -35,7 +35,7 @@ const SongPlaylist: FC = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch(addSong(songName as never));
+    dispatch(addSong(songName));
     setSongName("");
     setIsAddSong(false);
   };
@@ -73,9 +73,8 @@ const SongPlaylist: FC = () => {
         </div>
       )}
       <div className="flex flex-col items-center">
-        {(songs as string[]).map((current) => (
-          <span key={current}>{current}</span>
-        ))}
+        {!!songs.length &&
+          songs.map((current) => <span key={current}>{current}</span>)}
       </div>
     </div>
   );
