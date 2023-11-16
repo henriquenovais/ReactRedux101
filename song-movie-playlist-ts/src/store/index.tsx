@@ -3,15 +3,11 @@ export interface SongsPlaylistState {
   songs: string[];
 }
 
-// const initialStateSongs: SongsPlaylistState = {
-//   songs: [],
-// };
-
 const songsSlice = createSlice({
   name: "song",
   initialState: new Array<string>(),
   reducers: {
-    addSong(state, action: PayloadAction<string>) {
+    addSong(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
     resetSongs(state) {
@@ -28,7 +24,7 @@ const moviesSlice = createSlice({
   name: "movie",
   initialState: new Array<string>(),
   reducers: {
-    addMovie(state, action: PayloadAction<string>) {
+    addMovie(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
     resetMovies(state) {
