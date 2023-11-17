@@ -1,18 +1,20 @@
 import React from "react";
 import "./App.css";
-import { resetMovies, resetSongs } from "./store";
 import SongPlaylist from "./components/SongPlaylist";
 import MoviePlaylist from "./components/MoviePlaylist";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
   const handleResetClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     event.preventDefault();
     event.stopPropagation();
 
-    resetSongs();
-    resetMovies();
+    dispatch({ type: "song/resetSongs" });
+    dispatch({ type: "movie/resetMovies" });
   };
 
   return (

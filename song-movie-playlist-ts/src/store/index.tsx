@@ -10,8 +10,8 @@ const songsSlice = createSlice({
     addSong(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
-    resetSongs(state) {
-      state = [];
+    resetSongs() {
+      return [];
     },
   },
 });
@@ -27,8 +27,8 @@ const moviesSlice = createSlice({
     addMovie(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
-    resetMovies(state) {
-      state = [];
+    resetMovies() {
+      return [];
     },
   },
 });
@@ -91,5 +91,3 @@ const store = configureStore({
 // console.log("Final state >>>>>>>>", finalState);
 
 export { store };
-export const { addSong, resetSongs } = songsSlice.actions;
-export const { addMovie, resetMovies } = moviesSlice.actions;
