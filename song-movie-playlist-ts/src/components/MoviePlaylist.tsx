@@ -62,6 +62,7 @@ const MoviePlaylist: FC = () => {
               type="text"
               onChange={(e) => handleNewMovieChange(e)}
               value={movieName}
+              autoFocus
             />
             <button
               className="w-48 h-8 bg-orange-700 rounded-lg text-center text-white font-bold"

@@ -10,6 +10,10 @@ const songsSlice = createSlice({
     addSong(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
+    removeSong(state: string[], actions: PayloadAction<string>) {
+      const index = state.indexOf(actions.payload);
+      return [...state].splice(index, 1);
+    },
     resetSongs() {
       return [];
     },
@@ -26,6 +30,10 @@ const moviesSlice = createSlice({
   reducers: {
     addMovie(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
+    },
+    removeMovie(state: string[], actions: PayloadAction<string>) {
+      const index = state.indexOf(actions.payload);
+      return [...state].splice(index, 1);
     },
     resetMovies() {
       return [];

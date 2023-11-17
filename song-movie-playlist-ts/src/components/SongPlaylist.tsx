@@ -62,6 +62,7 @@ const SongPlaylist: FC = () => {
               type="text"
               onChange={(e) => handleNewSongChange(e)}
               value={songName}
+              autoFocus
             />
             <button
               className="w-48 h-8 bg-orange-700 rounded-lg text-center text-white font-bold"
