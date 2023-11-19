@@ -1,4 +1,9 @@
-import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
+import {
+  Action,
+  PayloadAction,
+  configureStore,
+  createSlice,
+} from "@reduxjs/toolkit";
 export interface SongsPlaylistState {
   songs: string[];
 }
@@ -10,13 +15,21 @@ const songsSlice = createSlice({
     addSong(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
-    removeSong(state: string[], actions: PayloadAction<string>) {
-      const index = state.indexOf(actions.payload);
+    removeSong(state: string[], action: PayloadAction<string>) {
+      const index = state.indexOf(action.payload);
       return [...state].splice(index, 1);
     },
     resetSongs() {
       return [];
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(
+      "movie/resetMovies",
+      (state: string[], action: Action<"movie/resetMovies">) => {
+        return [];
+      }
+    );
   },
 });
 
@@ -31,8 +44,8 @@ const moviesSlice = createSlice({
     addMovie(state: string[], action: PayloadAction<string>) {
       state.push(action.payload);
     },
-    removeMovie(state: string[], actions: PayloadAction<string>) {
-      const index = state.indexOf(actions.payload);
+    removeMovie(state: string[], action: PayloadAction<string>) {
+      const index = state.indexOf(action.payload);
       return [...state].splice(index, 1);
     },
     resetMovies() {
