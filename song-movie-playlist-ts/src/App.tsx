@@ -3,6 +3,7 @@ import "./App.css";
 import SongPlaylist from "./components/SongPlaylist";
 import MoviePlaylist from "./components/MoviePlaylist";
 import { useDispatch } from "react-redux";
+import { RESET } from "./store";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,8 +14,7 @@ function App() {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch({ type: "song/resetSongs" });
-    dispatch({ type: "movie/resetMovies" });
+    dispatch({ type: RESET });
   };
 
   return (

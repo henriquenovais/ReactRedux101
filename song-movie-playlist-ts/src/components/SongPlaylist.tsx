@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SongsPlaylistState } from "../store";
+import { ADD_SONG, SongsPlaylistState } from "../store";
 
 const SongPlaylist: FC = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const SongPlaylist: FC = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch({ type: "song/addSong", payload: songName });
+    dispatch({ type: ADD_SONG, payload: songName });
     setSongName("");
     setIsAddSong(false);
   };
