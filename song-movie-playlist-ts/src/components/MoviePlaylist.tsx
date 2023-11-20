@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_MOVIE, MoviesPlaylistState } from "../store";
+import { addMovie, removeMovie } from "../store";
+import { MoviesPlaylistState } from "../store/slices/moviesSlice";
 
 const MoviePlaylist: FC = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,16 @@ const MoviePlaylist: FC = () => {
     event.stopPropagation();
 
     setIsAddMovie(true);
+  };
+
+  const handleCloseClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    value: string
+  ): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    dispatch(removeMovie(value));
   };
 
   const handleNewMovieChange = (
@@ -35,7 +46,7 @@ const MoviePlaylist: FC = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch({ type: ADD_MOVIE, payload: movieName });
+    dispatch(addMovie(movieName));
     setMovieName("");
     setIsAddMovie(false);
   };
@@ -75,7 +86,18 @@ const MoviePlaylist: FC = () => {
       )}
       <div className="flex flex-col items-center">
         {movies.map((current) => (
-          <span key={current}>{current}</span>
+          <div
+            className="w-fill flex flex-row items-center h-8 gap-3"
+            key={current}
+          >
+            {current}
+            <button
+              className="w-8 h-8 bg-orange-700 rounded-lg text-center text-white font-bold"
+              onClick={(e) => handleCloseClick(e, current)}
+            >
+              X
+            </button>
+          </div>
         ))}
       </div>
     </div>

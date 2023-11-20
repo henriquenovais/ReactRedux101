@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_SONG, SongsPlaylistState } from "../store";
+import { addSong, removeSong } from "../store";
+import { SongsPlaylistState } from "../store/slices/songsSlice";
 
 const SongPlaylist: FC = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,16 @@ const SongPlaylist: FC = () => {
     event.stopPropagation();
 
     setIsAddSong(true);
+  };
+
+  const handleCloseClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    value: string
+  ): void => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    dispatch(removeSong(value));
   };
 
   const handleNewSongChange = (
@@ -35,7 +46,7 @@ const SongPlaylist: FC = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    dispatch({ type: ADD_SONG, payload: songName });
+    dispatch(addSong(songName));
     setSongName("");
     setIsAddSong(false);
   };
@@ -75,7 +86,20 @@ const SongPlaylist: FC = () => {
       )}
       <div className="flex flex-col items-center">
         {!!songs.length &&
-          songs.map((current) => <span key={current}>{current}</span>)}
+          songs.map((current) => (
+            <div
+              className="w-fill flex flex-row items-center h-8 gap-3"
+              key={current}
+            >
+              {current}
+              <button
+                className="w-8 h-8 bg-orange-700 rounded-lg text-center text-white font-bold"
+                onClick={(e) => handleCloseClick(e, current)}
+              >
+                X
+              </button>
+            </div>
+          ))}
       </div>
     </div>
   );
