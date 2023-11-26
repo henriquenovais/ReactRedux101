@@ -6,15 +6,9 @@ import CarSearch from "./components/CarSearch";
 
 const App: FC = () => {
   return (
-    <div className="flex flex-row text-9xl">
-      <div >
-        <h1>Car management app is here</h1>
-      </div>
+    <div className="flex flex-row px-6 py-3 rounded-md shadow-md">
       <div>
         <CarForm />
-        <CarSearch />
-        <CarList />
-        <CarValue />
       </div>
     </div>
   );
