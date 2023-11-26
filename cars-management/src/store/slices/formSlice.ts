@@ -15,13 +15,13 @@ const formSlice = createSlice({
     updateName(state: FormState, action: PayloadAction<string>) {
       return {
         ...state,
-        name: state.name + action.payload,
+        name: action.payload,
       };
     },
-    updatePrice(state: FormState, action: PayloadAction<number>) {
+    updatePrice(state: FormState, action: PayloadAction<string>) {
       return {
         ...state,
-        price: action.payload,
+        price: parseInt(action.payload),
       };
     },
   },

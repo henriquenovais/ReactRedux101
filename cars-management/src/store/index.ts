@@ -1,5 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { carsReducers, deleteCar, insertCar } from "./slices/carsSlice";
+import {
+  carsReducers,
+  deleteCar,
+  insertCar,
+  updateSearchTerm,
+} from "./slices/carsSlice";
 import { formReducers, updateName, updatePrice } from "./slices/formSlice";
 
 const store = configureStore({
@@ -9,4 +14,13 @@ const store = configureStore({
   },
 });
 
-export { insertCar, deleteCar, store, updateName, updatePrice };
+export type RootState = ReturnType<typeof store.getState>;
+
+export {
+  insertCar,
+  deleteCar,
+  store,
+  updateName,
+  updatePrice,
+  updateSearchTerm,
+};

@@ -26,11 +26,11 @@ const carsSlice = createSlice({
     updateSearchTerm(state: CarsState, action: PayloadAction<string>) {
       return {
         ...state,
-        searchTerm: state.searchTerm + action.payload,
+        searchTerm: action.payload,
       };
     },
   },
 });
 
 export const carsReducers = carsSlice.reducer;
-export const { deleteCar, insertCar } = carsSlice.actions;
+export const { deleteCar, insertCar, updateSearchTerm } = carsSlice.actions;

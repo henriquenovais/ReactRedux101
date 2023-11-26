@@ -11,7 +11,7 @@ const CarList: FC<ICarList> = ({ data }) => {
       {data.map((current) => {
         return (
           <div
-            key={current.name}
+            key={current.id}
             className="w-full flex flex-row gap-y-3 gap-x-12 items-center justify-center"
           >
             <span>{current.name}</span> <span>${current.price}</span>
