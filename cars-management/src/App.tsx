@@ -6,8 +6,8 @@ import CarSearch from "./components/CarSearch";
 
 const App: FC = () => {
   return (
-    <>
-      <div>
+    <div className="flex flex-row text-9xl">
+      <div >
         <h1>Car management app is here</h1>
       </div>
       <div>
@@ -16,7 +16,7 @@ const App: FC = () => {
         <CarList />
         <CarValue />
       </div>
-    </>
+    </div>
   );
 };
 
