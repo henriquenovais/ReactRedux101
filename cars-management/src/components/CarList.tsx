@@ -1,7 +1,25 @@
 import { FC } from "react";
+import { Car } from "../types";
 
-const CarList: FC = () => {
-  return <h1>CarList</h1>;
+interface ICarList {
+  data: Car[];
+}
+
+const CarList: FC<ICarList> = ({ data }) => {
+  return (
+    <div className="w-full flex flex-col gap-3">
+      {data.map((current) => {
+        return (
+          <div
+            key={current.name}
+            className="w-full flex flex-row gap-y-3 gap-x-12 items-center justify-center"
+          >
+            <span>{current.name}</span> <span>${current.price}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default CarList;
