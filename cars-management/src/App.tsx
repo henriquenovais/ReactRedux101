@@ -6,10 +6,10 @@ import CarSearch from "./components/CarSearch";
 
 const App: FC = () => {
   return (
-    <div className="flex flex-row px-6 py-3 rounded-md shadow-md">
-      <div>
-        <CarForm />
-      </div>
+    <div className="flex flex-col items-center content-center justify-center gap-6 mx-8 my-8 p-8 border-2 border-blue-400 rounded-md shadow-lg">
+      <h3>Insert car</h3>
+      <CarForm />
+
     </div>
   );
 };
