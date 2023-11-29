@@ -1,4 +1,4 @@
-import { Action, PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { reset } from "../actions";
 
 export interface MoviesPlaylistState {
@@ -18,7 +18,7 @@ const moviesSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(reset, (state: string[], action: Action) => {
+    builder.addCase(reset, (state: string[], action: PayloadAction<any>) => {
       return [];
     });
   },
