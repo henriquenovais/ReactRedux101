@@ -1,29 +1,27 @@
 import { FC, MouseEvent } from "react";
+import classnames from "classnames";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
-import { classNamer } from "../utils/Strings";
 
-interface IGenericButton {
+interface IButton {
   text: string;
   icon?: JSX.Element;
   shape?: ButtonShape;
   coloring?: ButtonColoring;
-  isOutlined?: Boolean;
-  isFilled?: Boolean;
   onClick?: () => void;
   className?: string;
 }
 
-const GenericButton: FC<IGenericButton> = ({
+const Button: FC<IButton> = ({
   text,
   icon = <></>,
   shape = ButtonShape.SQUARE,
   coloring = ButtonColoring.PRIMARY,
-  isOutlined = true,
-  isFilled = true,
   onClick = () => {},
   className = "",
 }) => {
   const classNames = classnames(
+    className,
+    "flex items-center justify-center py-1.5 px-1.5 border w-32 h-12 font-bold",
     {
       "border-blue-500 bg-blue-500 text-white":
         coloring === ButtonColoring.PRIMARY,
@@ -37,9 +35,7 @@ const GenericButton: FC<IGenericButton> = ({
         coloring === ButtonColoring.DANGER,
       "rounded-full": shape === ButtonShape.PILL,
       "rounded-lg": shape === ButtonShape.ROUNDED_CORNERS,
-    },
-    className,
-    "flex items-center justify-center py-1.5 px-1.5 border w-32 h-12 font-bold"
+    }
   );
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -57,4 +53,4 @@ const GenericButton: FC<IGenericButton> = ({
   );
 };
 
-export default GenericButton;
+export default Button;
