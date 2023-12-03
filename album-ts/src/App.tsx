@@ -7,14 +7,21 @@ import { ButtonColoring, ButtonShape } from "./constants/enums/button";
 import Album from "./components/User";
 import { addUser } from "./store/thunks/addUser";
 import Skeleton from "./components/Skeleton";
+import { useThunk } from "./hooks/useThunk";
+import { FaSpinner } from "react-icons/fa";
 
 function App() {
   const dispatch = useAppDispatch();
   const users = useSelector((state: RootState) => {
     return state.users;
   });
+  const [addUserCall, addUserLoading, addUserErrors] = useThunk(addUser());
 
-  console.log("users >>>>>>>>>>>>>>>>>>>", users);
+  if (addUserErrors) {
+    addUserErrors.forEach((item) => {
+      console.error(item);
+    });
+  }
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -26,12 +33,14 @@ function App() {
         <h1>Users </h1>
         <Button
           onClick={() => {
-            dispatch(addUser());
+            addUserCall();
             dispatch(fetchUsers());
           }}
           text={"Add user"}
           coloring={ButtonColoring.PRIMARY}
           shape={ButtonShape.PILL}
+          icon={addUserLoading ? <FaSpinner /> : <></>}
+          disabled={addUserLoading}
         />
       </div>
       <div className="flex flex-col align-center items-center justify-evenly p-4">

@@ -9,9 +9,11 @@ interface IButton {
   coloring?: ButtonColoring;
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
 const Button: FC<IButton> = ({
+  disabled,
   text,
   icon = <></>,
   shape = ButtonShape.SQUARE,
@@ -46,7 +48,7 @@ const Button: FC<IButton> = ({
   };
 
   return (
-    <button className={classNames} onClick={handleClick}>
+    <button className={classNames} onClick={handleClick} disabled={disabled}>
       {icon}
       {text}
     </button>
