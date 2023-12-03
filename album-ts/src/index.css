@@ -1,0 +1,19 @@
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: rgb(55 65 81);
+  font-family: "Arial";
+}
