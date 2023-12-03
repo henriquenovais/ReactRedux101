@@ -1,5 +1,38 @@
 {
-  "users": [{ "id": 1, "name": "Myra" }],
+  "users": [
+    {
+      "id": "1",
+      "name": "Myra"
+    },
+    {
+      "id": "rAY-f5vO0gBPnDBPFwGR2",
+      "name": "Mathias Veum"
+    },
+    {
+      "id": "-brfm8pLEohoH6lqb2rAh",
+      "name": "Billy Altenwerth"
+    },
+    {
+      "id": "N-EJfOVRUC4RjD2grjkxB",
+      "name": "Augusta Balistreri"
+    },
+    {
+      "id": "SqBBvWstHr05MVz3r2LRT",
+      "name": "Oscar Harber"
+    },
+    {
+      "id": "yP_UVGq5sE4tSqkFjHyoi",
+      "name": "Wava Buckridge"
+    },
+    {
+      "id": "kdt-q5NNNLWokus41X7s5",
+      "name": "Alexandre Satterfield"
+    },
+    {
+      "id": "OsoW-RoGykFQ741taebsC",
+      "name": "Audreanne Jacobson"
+    }
+  ],
   "albums": [],
   "photos": []
 }
