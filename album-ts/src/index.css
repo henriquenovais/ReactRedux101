@@ -16,4 +16,7 @@ body {
   padding: 0;
   color: rgb(55 65 81);
   font-family: "Arial";
+  font-weight: 600;
 }
+
+@import "./styles/tailwind.css";

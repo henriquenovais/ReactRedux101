@@ -1,8 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "./store";
 import { useEffect } from "react";
 import { fetchUsers } from "./store/thunks/fetchUsers";
-import { AsyncThunkAction, ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
+import Button from "./components/Button";
+import { ButtonColoring, ButtonShape } from "./constants/enums/button";
+import Album from "./components/User";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -14,9 +16,27 @@ function App() {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  console.log("users >>>>>>>>>>>>>>>>>>>>", users);
+  console.log("users.data >>>>>>>>>>>>>>", users.data);
 
-  return !users.isLoading ? <h1>App</h1> : <h1>Loading...</h1>;
+  return (
+    <>
+      <div className="flex flex-row align-center items-center justify-evenly p-4">
+        <h1>Users </h1>
+        <Button
+          text={"Add user"}
+          coloring={ButtonColoring.PRIMARY}
+          shape={ButtonShape.PILL}
+        />
+      </div>
+      <div className="flex flex-col align-center items-center justify-evenly p-4">
+        {!users.isLoading ? (
+          users.data.map((item) => <Album data={item} />)
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default App;
