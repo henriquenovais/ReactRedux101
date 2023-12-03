@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import { ButtonColoring, ButtonShape } from "./constants/enums/button";
 import Album from "./components/User";
 import { addUser } from "./store/thunks/addUser";
+import Skeleton from "./components/Skeleton";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -37,7 +38,7 @@ function App() {
         {!users.isLoading ? (
           users.data.map((item) => <Album key={item.id} data={item} />)
         ) : (
-          <h1>Loading...</h1>
+          <Skeleton layoutQty={6} className="h-10 w-full" />
         )}
       </div>
     </>
