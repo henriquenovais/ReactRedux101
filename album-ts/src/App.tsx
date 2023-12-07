@@ -35,7 +35,6 @@ function App() {
         <Button
           onClick={() => {
             addUserCall();
-            dispatch(fetchUsers());
           }}
           text={"Add user"}
           coloring={ButtonColoring.PRIMARY}
