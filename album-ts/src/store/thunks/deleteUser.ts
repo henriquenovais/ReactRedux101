@@ -4,10 +4,10 @@ import { User } from "../../types";
 
 const deleteUser = createAsyncThunk(
   "users/delete",
-  async (id: string): Promise<User[]> => {
-    const response = await axios.delete(`http://localhost:3005/users/${id}`);
+  async (user: User): Promise<User> => {
+    await axios.delete(`http://localhost:3005/users/${user.id}`);
 
-    return response.data;
+    return user;
   }
 );
 

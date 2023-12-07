@@ -4,20 +4,23 @@ import { useDispatch } from "react-redux";
 import { AppThunkDispatch } from "../store";
 
 export const useThunk = (
-  thunk: AsyncThunkAction<any, void, any>
+  thunk: AsyncThunkAction<any, any, any>
 ): [() => void, boolean, Error[]] => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Array<Error>>([]);
   const dispatch = useDispatch<AppThunkDispatch>();
 
-  const thunkCallback = useCallback(() => {
-    setIsLoading(true);
-    dispatch(thunk)
-      .catch((err) => {
-        setErrors((current) => [...current, err]);
-      })
-      .finally(() => setIsLoading(false));
-  }, [dispatch, thunk]);
+  const thunkCallback = useCallback(
+    (payload: any) => {
+      setIsLoading(true);
+      dispatch(thunk)
+        .catch((err) => {
+          setErrors((current) => [...current, err]);
+        })
+        .finally(() => setIsLoading(false));
+    },
+    [dispatch, thunk]
+  );
 
   return [thunkCallback, isLoading, errors];
 };

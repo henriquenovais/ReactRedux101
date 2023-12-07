@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
 
 interface IButton {
-  text: string;
+  text?: string;
   icon?: JSX.Element;
   shape?: ButtonShape;
   coloring?: ButtonColoring;
@@ -37,6 +37,7 @@ const Button: FC<IButton> = ({
       "bg-gray-500": disabled,
       "rounded-full": shape === ButtonShape.PILL,
       "rounded-lg": shape === ButtonShape.ROUNDED_CORNERS,
+      "gap-1": icon && text,
     },
     className
   );
@@ -50,9 +51,9 @@ const Button: FC<IButton> = ({
 
   return (
     <button className={classNames} onClick={handleClick} disabled={disabled}>
-      <div className="flex flex-row items-center gap-1">
-        <div>{icon}</div>
-        <div>{text}</div>
+      <div className="flex flex-row items-center">
+        <div>{icon && icon}</div>
+        <div>{text && text}</div>
       </div>
     </button>
   );

@@ -3,6 +3,7 @@ import { fetchUsers } from "../thunks/fetchUsers";
 import { User } from "../../types";
 import { UnknownAsyncThunkRejectedAction } from "@reduxjs/toolkit/dist/matchers";
 import { addUser } from "../thunks/addUser";
+import { deleteUser } from "../thunks/deleteUser";
 
 export interface UsersState {
   data: Array<User>;
@@ -65,6 +66,36 @@ const usersSlice = createSlice({
       )
       .addCase(
         addUser.rejected,
+        (state: UsersState, action: UnknownAsyncThunkRejectedAction) => {
+          state.isLoading = false;
+          state.errors.push(
+            action.error.message ?? "No error message provided"
+          );
+        }
+      );
+
+    /**
+     *  ######################################
+     *  ##### EXTRA CASE: DELETE USER THUNK ##
+     *  ######################################
+     */
+
+    builder
+      .addCase(
+        deleteUser.pending,
+        (state: UsersState, action: PayloadAction) => {
+          state.isLoading = true;
+        }
+      )
+      .addCase(
+        deleteUser.fulfilled,
+        (state: UsersState, action: PayloadAction<User>) => {
+          state.isLoading = false;
+          state.data.filter((current) => current.id !== action.payload.id);
+        }
+      )
+      .addCase(
+        deleteUser.rejected,
         (state: UsersState, action: UnknownAsyncThunkRejectedAction) => {
           state.isLoading = false;
           state.errors.push(
