@@ -35,6 +35,7 @@ const Button: FC<IButton> = ({
         coloring === ButtonColoring.WARNING,
       "border-red-500 bg-red-500 text-white":
         coloring === ButtonColoring.DANGER,
+      "bg-gray-500": disabled,
       "rounded-full": shape === ButtonShape.PILL,
       "rounded-lg": shape === ButtonShape.ROUNDED_CORNERS,
     }
@@ -49,8 +50,10 @@ const Button: FC<IButton> = ({
 
   return (
     <button className={classNames} onClick={handleClick} disabled={disabled}>
-      {icon}
-      {text}
+      <div className="flex flex-row items-center gap-1">
+        <div>{icon}</div>
+        <div>{text}</div>
+      </div>
     </button>
   );
 };
