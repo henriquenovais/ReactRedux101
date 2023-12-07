@@ -15,6 +15,7 @@ function App() {
   const users = useSelector((state: RootState) => {
     return state.users;
   });
+
   const [addUserCall, addUserLoading, addUserErrors] = useThunk(addUser());
 
   if (addUserErrors) {
@@ -45,7 +46,9 @@ function App() {
       </div>
       <div className="flex flex-col align-center items-center justify-evenly p-4">
         {!users.isLoading ? (
-          users.data.map((item) => <Album key={item.id} data={item} />)
+          users.data.map((item) => (
+            <Album key={item.id} data={item} deleteAlbum={() => {}} />
+          ))
         ) : (
           <Skeleton layoutQty={6} className="h-10 w-full" />
         )}

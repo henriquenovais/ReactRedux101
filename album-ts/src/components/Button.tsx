@@ -22,7 +22,6 @@ const Button: FC<IButton> = ({
   className = "",
 }) => {
   const classNames = classnames(
-    className,
     "flex items-center justify-center py-1.5 px-1.5 border w-32 h-12 font-bold",
     {
       "border-blue-500 bg-blue-500 text-white":
@@ -38,7 +37,8 @@ const Button: FC<IButton> = ({
       "bg-gray-500": disabled,
       "rounded-full": shape === ButtonShape.PILL,
       "rounded-lg": shape === ButtonShape.ROUNDED_CORNERS,
-    }
+    },
+    className
   );
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
