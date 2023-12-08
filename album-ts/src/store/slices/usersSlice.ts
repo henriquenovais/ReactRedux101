@@ -1,7 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../thunks/fetchUsers";
 import { User } from "../../types";
-import { UnknownAsyncThunkRejectedAction } from "@reduxjs/toolkit/dist/matchers";
 import { addUser } from "../thunks/addUser";
 import { deleteUser } from "../thunks/deleteUser";
 
@@ -24,28 +23,17 @@ const usersSlice = createSlice({
      *  ######################################
      */
     builder
-      .addCase(
-        fetchUsers.pending,
-        (state: UsersState, action: PayloadAction) => {
-          state.isLoading = true;
-        }
-      )
-      .addCase(
-        fetchUsers.fulfilled,
-        (state: UsersState, action: PayloadAction<User[]>) => {
-          state.isLoading = false;
-          state.data = action.payload;
-        }
-      )
-      .addCase(
-        fetchUsers.rejected,
-        (state: UsersState, action: UnknownAsyncThunkRejectedAction) => {
-          state.isLoading = false;
-          state.errors.push(
-            action.error.message ?? "No error message provided"
-          );
-        }
-      );
+      .addCase(fetchUsers.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors.push(action.error.message ?? "No error message provided");
+      });
 
     /**
      *  ######################################
@@ -54,25 +42,17 @@ const usersSlice = createSlice({
      */
 
     builder
-      .addCase(addUser.pending, (state: UsersState, action: PayloadAction) => {
+      .addCase(addUser.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(
-        addUser.fulfilled,
-        (state: UsersState, action: PayloadAction<User>) => {
-          state.isLoading = false;
-          state.data.push(action.payload);
-        }
-      )
-      .addCase(
-        addUser.rejected,
-        (state: UsersState, action: UnknownAsyncThunkRejectedAction) => {
-          state.isLoading = false;
-          state.errors.push(
-            action.error.message ?? "No error message provided"
-          );
-        }
-      );
+      .addCase(addUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data.push(action.payload);
+      })
+      .addCase(addUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors.push(action.error.message ?? "No error message provided");
+      });
 
     /**
      *  ######################################
@@ -81,28 +61,17 @@ const usersSlice = createSlice({
      */
 
     builder
-      .addCase(
-        deleteUser.pending,
-        (state: UsersState, action: PayloadAction) => {
-          state.isLoading = true;
-        }
-      )
-      .addCase(
-        deleteUser.fulfilled,
-        (state: UsersState, action: PayloadAction<User>) => {
-          state.isLoading = false;
-          state.data.filter((current) => current.id !== action.payload.id);
-        }
-      )
-      .addCase(
-        deleteUser.rejected,
-        (state: UsersState, action: UnknownAsyncThunkRejectedAction) => {
-          state.isLoading = false;
-          state.errors.push(
-            action.error.message ?? "No error message provided"
-          );
-        }
-      );
+      .addCase(deleteUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data.filter((current) => current.id !== action.payload.id);
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors.push(action.error.message ?? "No error message provided");
+      });
   },
 });
 

@@ -17,11 +17,16 @@ function App() {
     return state.users;
   });
 
-  const [addUserCall, addUserLoading, addUserErrors] = useThunk(addUser());
-  const [] = useThunk(deleteUser);
+  const addUserTracker = useThunk(addUser);
+  const deleteUserTracker = useThunk(deleteUser);
 
-  if (addUserErrors) {
-    addUserErrors.forEach((item) => {
+  if (addUserTracker.errors.length > 0 || deleteUserTracker.errors.length > 0) {
+    const errors: Error[] = [
+      ...addUserTracker.errors,
+      ...deleteUserTracker.errors,
+    ];
+
+    errors.forEach((item) => {
       console.error(item);
     });
   }
@@ -36,19 +41,23 @@ function App() {
         <h1>Users </h1>
         <Button
           onClick={() => {
-            addUserCall();
+            addUserTracker.triggerThunk();
           }}
           text={"Add user"}
           coloring={ButtonColoring.PRIMARY}
           shape={ButtonShape.PILL}
-          icon={addUserLoading ? <FaSpinner /> : <></>}
-          disabled={addUserLoading}
+          icon={addUserTracker.isLoading ? <FaSpinner /> : <></>}
+          disabled={addUserTracker.isLoading}
         />
       </div>
       <div className="flex flex-col align-center items-center justify-evenly p-4 gap-2">
         {!users.isLoading ? (
           users.data.map((item) => (
-            <Album key={item.id} data={item} deleteAlbum={() => {}} />
+            <Album
+              key={item.id}
+              data={item}
+              deleteAlbum={deleteUserTracker.triggerThunk}
+            />
           ))
         ) : (
           <Skeleton layoutQty={6} className="h-10 w-full" />
