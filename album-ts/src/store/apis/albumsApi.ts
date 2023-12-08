@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export interface Pokemon {
-  something?: string;
-}
+import { User } from "../../types";
 
 const albumsApi = createApi({
   reducerPath: "albums",
@@ -12,7 +9,7 @@ const albumsApi = createApi({
   endpoints: (builder) => {
     return {
       getAlbums: builder.query({
-        query: (user) => {
+        query: (user: User) => {
           return {
             url: "/albums",
             params: {
