@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers } from "../thunks/fetchUsers";
 import { User } from "../../types";
 import { addUser } from "../thunks/addUser";
 import { deleteUser } from "../thunks/deleteUser";
+import { getUsers } from "../thunks/fetchUsers";
 
 export interface UsersState {
   data: Array<User>;
@@ -23,14 +23,14 @@ const usersSlice = createSlice({
      *  ######################################
      */
     builder
-      .addCase(fetchUsers.pending, (state, action) => {
+      .addCase(getUsers.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
+      .addCase(getUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.data = action.payload;
       })
-      .addCase(fetchUsers.rejected, (state, action) => {
+      .addCase(getUsers.rejected, (state, action) => {
         state.isLoading = false;
         state.errors.push(action.error.message ?? "No error message provided");
       });

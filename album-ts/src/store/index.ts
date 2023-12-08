@@ -5,14 +5,21 @@ import {
   configureStore,
 } from "@reduxjs/toolkit";
 import { usersReducer } from "./slices/usersSlice";
-import thunkMiddleware from "redux-thunk";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { albumsApi } from "./apis/albumsApi";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { getUsers } from "./thunks/fetchUsers";
+import { deleteUser } from "./thunks/deleteUser";
+import { addUser } from "./thunks/addUser";
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
+    [albumsApi.reducerPath]: albumsApi.reducer,
   },
-  middleware: [thunkMiddleware],
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(albumsApi.middleware);
+  },
 });
 
 // 1. Get the root state's type from reducers
@@ -30,4 +37,6 @@ export type AppStore = Omit<Store<RootState, AnyAction>, "dispatch"> & {
 export const useAppDispatch = () => useDispatch<AppThunkDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export { store };
+setupListeners(store.dispatch);
+
+export { store, getUsers, deleteUser, addUser };

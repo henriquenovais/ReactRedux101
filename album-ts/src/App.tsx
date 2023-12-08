@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "./store";
 import { useEffect } from "react";
-import { fetchUsers } from "./store/thunks/fetchUsers";
 import Button from "./components/Button";
 import { ButtonColoring, ButtonShape } from "./constants/enums/button";
 import Album from "./components/Album";
@@ -11,6 +10,7 @@ import { useThunk } from "./hooks/useThunk";
 import { FaSpinner } from "react-icons/fa";
 import { deleteUser } from "./store/thunks/deleteUser";
 import { User } from "./types";
+import { getUsers } from "./store/thunks/fetchUsers";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (
@@ -61,7 +61,7 @@ function App() {
             />
           ))
         ) : (
-          <Skeleton layoutQty={users.data.length} className="h-16 w-80" />
+          <Skeleton layoutQty={users.data.length ?? 6} className="h-16 w-80" />
         )}
       </div>
     </>
