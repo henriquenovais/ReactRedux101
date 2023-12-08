@@ -2,8 +2,8 @@ import { AsyncThunk, Dispatch } from "@reduxjs/toolkit";
 import { useCallback, useState } from "react";
 import { useAppDispatch } from "../store";
 
-export interface ThunkTracker {
-  triggerThunk: (payload?: any) => void;
+export interface ThunkTracker<U> {
+  triggerThunk: (payload: U) => void;
   isLoading: boolean;
   errors: Error[];
 }
@@ -21,7 +21,7 @@ export interface AsyncThunkConfig {
 
 export function useThunk<T, U>(
   thunk: AsyncThunk<T, U, AsyncThunkConfig>
-): ThunkTracker {
+): ThunkTracker<U> {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Array<Error>>([]);
   const dispatch = useAppDispatch();
@@ -30,6 +30,7 @@ export function useThunk<T, U>(
     (payload: U) => {
       setIsLoading(true);
       dispatch(thunk(payload))
+        .unwrap()
         .catch((err) => {
           setErrors((current) => [...current, err]);
         })

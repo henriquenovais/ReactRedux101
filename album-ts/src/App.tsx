@@ -10,6 +10,7 @@ import Skeleton from "./components/Skeleton";
 import { useThunk } from "./hooks/useThunk";
 import { FaSpinner } from "react-icons/fa";
 import { deleteUser } from "./store/thunks/deleteUser";
+import { User } from "./types";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,8 +18,8 @@ function App() {
     return state.users;
   });
 
-  const addUserTracker = useThunk(addUser);
-  const deleteUserTracker = useThunk(deleteUser);
+  const addUserTracker = useThunk<User, void>(addUser);
+  const deleteUserTracker = useThunk<User, User>(deleteUser);
 
   if (addUserTracker.errors.length > 0 || deleteUserTracker.errors.length > 0) {
     const errors: Error[] = [
