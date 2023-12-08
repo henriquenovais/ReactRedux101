@@ -61,7 +61,7 @@ function App() {
             />
           ))
         ) : (
-          <Skeleton layoutQty={6} className="h-10 w-full" />
+          <Skeleton layoutQty={users.data.length} className="h-16 w-80" />
         )}
       </div>
     </>
