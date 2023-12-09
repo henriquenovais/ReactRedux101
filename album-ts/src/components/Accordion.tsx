@@ -30,8 +30,8 @@ const Accordion: FC<IAccordion> = ({
   );
 
   return (
-    <div className="gap-0">
-      <div className="w-80 flex flex-col select-none p-4 border-2 border-solid border-gray-300">
+    <div className="gap-0 select-none">
+      <div className="w-80 flex flex-col p-4 border-2 border-solid border-gray-300">
         <div key={id}>
           <div
             key={id}
@@ -48,7 +48,7 @@ const Accordion: FC<IAccordion> = ({
         </div>
       </div>
       {expanded && (
-        <div className="w-80 flex flex-col select-none p-4 border-x-2 border-b-2 border-solid border-gray-300">
+        <div className="w-80 flex flex-col p-4 border-x-2 border-b-2 border-solid border-gray-300">
           {description}
         </div>
       )}
