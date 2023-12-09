@@ -30,26 +30,28 @@ const Accordion: FC<IAccordion> = ({
   );
 
   return (
-    <div className="flex flex-col gap-0.5 select-none">
-      <div key={id} className="w-80 border-2 border-solid border-gray-300">
-        <div
-          key={id}
-          className={headerStyle}
-          onClick={(event) => onClick(event)}
-        >
-          {expanded ? (
-            <GoChevronDown className="text-3xl" />
-          ) : (
-            <GoChevronLeft className="text-3xl" />
-          )}
-          {header}
-        </div>
-        {expanded && (
-          <div className="cursor-default p-1 text-left border-t-2 border-gray-300">
-            {description}
+    <div className="gap-0">
+      <div className="w-80 flex flex-col select-none p-4 border-2 border-solid border-gray-300">
+        <div key={id}>
+          <div
+            key={id}
+            className={headerStyle}
+            onClick={(event) => onClick(event)}
+          >
+            {expanded ? (
+              <GoChevronDown className="text-3xl" />
+            ) : (
+              <GoChevronLeft className="text-3xl" />
+            )}
+            {header}
           </div>
-        )}
+        </div>
       </div>
+      {expanded && (
+        <div className="w-80 flex flex-col select-none p-4 border-x-2 border-b-2 border-solid border-gray-300">
+          {description}
+        </div>
+      )}
     </div>
   );
 };
