@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { User } from "../types";
+import { AlbumData, User } from "../types";
 import Button from "./Button";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
 import { GoTrash } from "react-icons/go";
 import Accordion from "./Accordion";
+import { useGetAlbumsQuery } from "../store/apis/albumsApi";
 
 interface IAlbum {
   data: User;
@@ -11,6 +12,8 @@ interface IAlbum {
 }
 
 const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
+  const { data: albums, error, isLoading } = useGetAlbumsQuery(data);
+
   const header = (
     <div className="w-80 flex flex-row items-center content-start justify-between p-4">
       <span>{data.name}</span>
@@ -28,7 +31,7 @@ const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
     <Accordion
       id="something"
       header={header}
-      description={`${data.name}'s Album`}
+      content={<>{`${data.name}'s Album`}</>}
     />
   );
 };

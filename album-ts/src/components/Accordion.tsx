@@ -5,14 +5,14 @@ import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 interface IAccordion {
   id: string;
   header: JSX.Element;
-  description: string;
+  content: JSX.Element;
   headerClassName?: string;
 }
 
 const Accordion: FC<IAccordion> = ({
   id,
   header,
-  description,
+  content,
   headerClassName = "",
 }) => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -49,7 +49,7 @@ const Accordion: FC<IAccordion> = ({
       </div>
       {expanded && (
         <div className="w-80 flex flex-col p-4 border-t-2 border-gray-400">
-          {description}
+          {content}
         </div>
       )}
     </div>
