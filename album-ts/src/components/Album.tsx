@@ -3,6 +3,7 @@ import { User } from "../types";
 import Button from "./Button";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
 import { GoTrash } from "react-icons/go";
+import Accordion from "./Accordion";
 
 interface IAlbum {
   data: User;
@@ -10,8 +11,8 @@ interface IAlbum {
 }
 
 const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
-  return (
-    <div className="w-80 flex flex-row items-center content-start justify-between p-4 border-2 border-gray-300">
+  const header = (
+    <div className="w-80 flex flex-row items-center content-start justify-between p-4">
       <span>{data.name}</span>
       <Button
         onClick={() => deleteAlbum(data)}
@@ -21,6 +22,14 @@ const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
         shape={ButtonShape.PILL}
       />
     </div>
+  );
+
+  return (
+    <Accordion
+      id="something"
+      header={header}
+      description={`${data.name}'s Album`}
+    />
   );
 };
 

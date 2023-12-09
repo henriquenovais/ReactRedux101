@@ -1,10 +1,6 @@
 {
   "users": [
     {
-      "id": "wYIdHLpG_XpOrE4ZHRsl-",
-      "name": "Leanne Hettinger"
-    },
-    {
       "id": "3tkhxVfySKa9Dz1Cf7aaC",
       "name": "Rey Ernser"
     },
@@ -19,8 +15,18 @@
     {
       "id": "xeJszmOQAPiB8_tI4XMfW",
       "name": "Candelario Pollich"
+    },
+    {
+      "id": "Yi2zIMNLai-XbDODm5Lzk",
+      "name": "Eden Lebsack"
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": "Aahuase2",
+      "title": "Candelario Pollich Album",
+      "userId": "xeJszmOQAPiB8_tI4XMfW"
+    }
+  ],
   "photos": []
 }
