@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import React from "react";
 import { FC, useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
@@ -30,6 +31,8 @@ const Accordion: FC<IAccordion> = ({
     "flex flex-row items-center justify-between cursor-pointer",
     headerClassName
   );
+
+  // console.log("isContentEmpty() >>>>>>>>>>>>>>>>>>>>>", isContentEmpty());
 
   return (
     <div className="gap-0 select-none border-2 border-gray-400">

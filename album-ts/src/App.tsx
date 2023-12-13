@@ -57,7 +57,7 @@ function App() {
             <UserInformation
               key={item.id}
               data={item}
-              deleteAlbum={deleteUserTracker.triggerThunk}
+              deleteUser={deleteUserTracker.triggerThunk}
             />
           ))
         ) : (
