@@ -5,7 +5,7 @@ import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 interface IAccordion {
   id: string;
   header: JSX.Element;
-  content: JSX.Element;
+  content?: JSX.Element;
   headerClassName?: string;
 }
 
@@ -21,7 +21,9 @@ const Accordion: FC<IAccordion> = ({
     event.preventDefault();
     event.stopPropagation();
 
-    setExpanded(!expanded);
+    if (content) {
+      setExpanded(!expanded);
+    }
   };
 
   const headerStyle = classNames(
@@ -38,11 +40,12 @@ const Accordion: FC<IAccordion> = ({
             className={headerStyle}
             onClick={(event) => onClick(event)}
           >
-            {expanded ? (
-              <GoChevronDown className="text-3xl" />
-            ) : (
-              <GoChevronLeft className="text-3xl" />
-            )}
+            {content &&
+              (expanded ? (
+                <GoChevronDown className="text-3xl" />
+              ) : (
+                <GoChevronLeft className="text-3xl" />
+              ))}
             {header}
           </div>
         </div>

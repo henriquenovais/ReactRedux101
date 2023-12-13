@@ -27,12 +27,12 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteAlbum }) => {
     </div>
   );
 
-  const generateAlbunsContent = (): JSX.Element => {
-    if (albums) {
+  const generateAlbunsContent = (): JSX.Element | undefined => {
+    if (albums && albums.length > 0) {
       return <>{albums?.map((item) => <div>{item.title}</div>)}</>;
     }
 
-    return <></>;
+    return undefined;
   };
 
   return (
