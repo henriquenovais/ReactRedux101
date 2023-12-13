@@ -8,7 +8,7 @@ const albumsApi = createApi({
   }),
   endpoints: (builder) => {
     return {
-      getAlbums: builder.query<AlbumData, User>({
+      getAlbums: builder.query<AlbumData[], User>({
         query: (user: User) => {
           return {
             url: "/albums",

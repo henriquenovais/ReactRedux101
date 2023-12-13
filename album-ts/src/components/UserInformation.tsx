@@ -6,12 +6,12 @@ import { GoTrash } from "react-icons/go";
 import Accordion from "./Accordion";
 import { useGetAlbumsQuery } from "../store/apis/albumsApi";
 
-interface IAlbum {
+interface IUserInformation {
   data: User;
   deleteAlbum: (user: User) => void;
 }
 
-const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
+const UserInformation: FC<IUserInformation> = ({ data, deleteAlbum }) => {
   const { data: albums, error, isLoading } = useGetAlbumsQuery(data);
 
   const header = (
@@ -27,13 +27,21 @@ const Album: FC<IAlbum> = ({ data, deleteAlbum }) => {
     </div>
   );
 
+  const generateAlbunsContent = (): JSX.Element => {
+    if (albums) {
+      return <>{albums?.map((item) => <div>{item.title}</div>)}</>;
+    }
+
+    return <></>;
+  };
+
   return (
     <Accordion
       id="something"
       header={header}
-      content={<>{`${data.name}'s Album`}</>}
+      content={generateAlbunsContent()}
     />
   );
 };
 
-export default Album;
+export default UserInformation;

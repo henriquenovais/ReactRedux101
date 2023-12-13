@@ -3,7 +3,7 @@ import { RootState, useAppDispatch } from "./store";
 import { useEffect } from "react";
 import Button from "./components/Button";
 import { ButtonColoring, ButtonShape } from "./constants/enums/button";
-import Album from "./components/Album";
+import UserInformation from "./components/UserInformation";
 import { addUser } from "./store/thunks/addUser";
 import Skeleton from "./components/Skeleton";
 import { useThunk } from "./hooks/useThunk";
@@ -54,7 +54,7 @@ function App() {
       <div className="flex flex-col align-center items-center justify-evenly p-4 gap-2">
         {!users.isLoading ? (
           users.data.map((item) => (
-            <Album
+            <UserInformation
               key={item.id}
               data={item}
               deleteAlbum={deleteUserTracker.triggerThunk}
