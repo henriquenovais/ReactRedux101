@@ -1,3 +1,5 @@
-export const wait = async (miliseconds: number): Promise<void> => {
-  await new Promise((resolve) => setTimeout(resolve, miliseconds));
+export const pause = async (miliseconds: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, miliseconds);
+  });
 };

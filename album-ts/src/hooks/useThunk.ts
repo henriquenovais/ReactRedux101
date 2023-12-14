@@ -1,6 +1,7 @@
 import { AsyncThunk, Dispatch } from "@reduxjs/toolkit";
 import { useCallback, useState } from "react";
 import { useAppDispatch } from "../store";
+import { pause } from "../util";
 
 export interface ThunkTracker<U> {
   triggerThunk: (payload: U) => void;
@@ -34,7 +35,10 @@ export function useThunk<T, U>(
         .catch((err) => {
           setErrors((current) => [...current, err]);
         })
-        .finally(() => setIsLoading(false));
+        .finally(async () => {
+          await pause(2000);
+          setIsLoading(false);
+        });
     },
     [dispatch, thunk]
   );

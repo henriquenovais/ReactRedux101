@@ -1,13 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { AlbumData, User } from "../../types";
-import { wait } from "../../util";
+import { pause } from "../../util";
 
 const albumsApi = createApi({
   reducerPath: "albums",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3005",
     fetchFn: async (...args) => {
-      await wait(2000);
+      console.log("here");
+      await pause(5000);
+      console.log("here 2");
       return fetch(...args);
     },
   }),

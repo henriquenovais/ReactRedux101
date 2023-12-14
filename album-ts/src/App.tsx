@@ -13,13 +13,13 @@ import { getUsers } from "./store/thunks/fetchUsers";
 import UserInformation from "./components/UserInformation";
 
 function App() {
-  const dispatch = useAppDispatch();
   const users = useSelector((state: RootState) => {
     return state.users;
   });
 
   const addUserTracker = useThunk<User, void>(addUser);
   const deleteUserTracker = useThunk<User, User>(deleteUser);
+  const getUsersTracker = useThunk<User[], void>(getUsers);
 
   if (addUserTracker.errors.length > 0 || deleteUserTracker.errors.length > 0) {
     const errors: Error[] = [
@@ -33,9 +33,13 @@ function App() {
   }
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    getUsersTracker.triggerThunk();
+  });
 
+  console.log(
+    "getUsersTracker.isLoading >>>>>>>>>>>>>>>>>>>>",
+    getUsersTracker.isLoading
+  );
   return (
     <>
       <div className="flex flex-row align-center items-center justify-evenly p-4">
@@ -52,7 +56,7 @@ function App() {
         />
       </div>
       <div className="flex flex-col align-center items-center justify-evenly p-4 gap-2">
-        {!users.isLoading ? (
+        {!getUsersTracker.isLoading ? (
           users.data.map((item) => (
             <UserInformation
               key={item.id}
