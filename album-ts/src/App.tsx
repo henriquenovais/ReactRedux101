@@ -3,7 +3,6 @@ import { RootState, useAppDispatch } from "./store";
 import { useEffect } from "react";
 import Button from "./components/Button";
 import { ButtonColoring, ButtonShape } from "./constants/enums/button";
-import UserInformation from "./components/UserInformation";
 import { addUser } from "./store/thunks/addUser";
 import Skeleton from "./components/Skeleton";
 import { useThunk } from "./hooks/useThunk";
@@ -11,6 +10,7 @@ import { FaSpinner } from "react-icons/fa";
 import { deleteUser } from "./store/thunks/deleteUser";
 import { User } from "./types";
 import { getUsers } from "./store/thunks/fetchUsers";
+import UserInformation from "./components/UserInformation";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -61,7 +61,7 @@ function App() {
             />
           ))
         ) : (
-          <Skeleton layoutQty={users.data.length ?? 6} className="h-16 w-80" />
+          <Skeleton layoutQty={8} className="h-16 w-80" />
         )}
       </div>
     </>

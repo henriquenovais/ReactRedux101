@@ -6,7 +6,11 @@ import {
 } from "@reduxjs/toolkit";
 import { usersReducer } from "./slices/usersSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { albumsApi } from "./apis/albumsApi";
+import {
+  albumsApi,
+  useCreateAlbumMutation,
+  useGetAlbumsQuery,
+} from "./apis/albumsApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { getUsers } from "./thunks/fetchUsers";
 import { deleteUser } from "./thunks/deleteUser";
@@ -39,4 +43,11 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 setupListeners(store.dispatch);
 
-export { store, getUsers, deleteUser, addUser };
+export {
+  store,
+  getUsers,
+  deleteUser,
+  addUser,
+  useGetAlbumsQuery,
+  useCreateAlbumMutation,
+};
