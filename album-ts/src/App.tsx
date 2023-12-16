@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "./store";
+import { RootState } from "./store";
 import { useEffect } from "react";
 import Button from "./components/Button";
 import { ButtonColoring, ButtonShape } from "./constants/enums/button";
@@ -17,14 +17,30 @@ function App() {
     return state.users;
   });
 
-  const addUserTracker = useThunk<User, void>(addUser);
-  const deleteUserTracker = useThunk<User, User>(deleteUser);
-  const getUsersTracker = useThunk<User[], void>(getUsers);
+  const {
+    triggerThunk: triggerAddUser,
+    isLoading: isAddUserLoading,
+    errors: addUserError,
+  } = useThunk<User, void>(addUser);
+  const { triggerThunk: triggerDeleteUser, errors: deleteUserError } = useThunk<
+    User,
+    User
+  >(deleteUser);
+  const {
+    triggerThunk: triggerGetUsers,
+    isLoading: isGetUsersLoading,
+    errors: getUsersError,
+  } = useThunk<User[], void>(getUsers);
 
-  if (addUserTracker.errors.length > 0 || deleteUserTracker.errors.length > 0) {
+  if (
+    getUsersError.length > 0 ||
+    deleteUserError.length > 0 ||
+    addUserError.length > 0
+  ) {
     const errors: Error[] = [
-      ...addUserTracker.errors,
-      ...deleteUserTracker.errors,
+      ...addUserError,
+      ...deleteUserError,
+      ...getUsersError,
     ];
 
     errors.forEach((item) => {
@@ -33,35 +49,31 @@ function App() {
   }
 
   useEffect(() => {
-    getUsersTracker.triggerThunk();
-  });
+    triggerGetUsers();
+  }, [triggerGetUsers]);
 
-  console.log(
-    "getUsersTracker.isLoading >>>>>>>>>>>>>>>>>>>>",
-    getUsersTracker.isLoading
-  );
   return (
     <>
       <div className="flex flex-row align-center items-center justify-evenly p-4">
         <h1>Users </h1>
         <Button
           onClick={() => {
-            addUserTracker.triggerThunk();
+            triggerAddUser();
           }}
           text={"Add user"}
           coloring={ButtonColoring.PRIMARY}
           shape={ButtonShape.PILL}
-          icon={addUserTracker.isLoading ? <FaSpinner /> : <></>}
-          disabled={addUserTracker.isLoading}
+          icon={isAddUserLoading ? <FaSpinner /> : <></>}
+          disabled={isAddUserLoading}
         />
       </div>
       <div className="flex flex-col align-center items-center justify-evenly p-4 gap-2">
-        {!getUsersTracker.isLoading ? (
+        {!isGetUsersLoading ? (
           users.data.map((item) => (
             <UserInformation
               key={item.id}
               data={item}
-              deleteUser={deleteUserTracker.triggerThunk}
+              deleteUser={triggerDeleteUser}
             />
           ))
         ) : (
