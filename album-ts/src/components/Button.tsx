@@ -15,7 +15,7 @@ interface IButton {
 const Button: FC<IButton> = ({
   disabled,
   text,
-  icon = <></>,
+  icon,
   shape = ButtonShape.SQUARE,
   coloring = ButtonColoring.PRIMARY,
   onClick = () => {},
@@ -51,9 +51,9 @@ const Button: FC<IButton> = ({
 
   return (
     <button className={classNames} onClick={handleClick} disabled={disabled}>
-      <div className="flex flex-row items-center">
-        <div>{icon && icon}</div>
-        <div>{text && text}</div>
+      <div className="flex flex-row items-center gap-2">
+        {icon && <div>{icon}</div>}
+        {text && <div>{text}</div>}
       </div>
     </button>
   );

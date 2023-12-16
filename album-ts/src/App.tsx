@@ -22,10 +22,12 @@ function App() {
     isLoading: isAddUserLoading,
     errors: addUserError,
   } = useThunk<User, void>(addUser);
+
   const { triggerThunk: triggerDeleteUser, errors: deleteUserError } = useThunk<
     User,
     User
   >(deleteUser);
+
   const {
     triggerThunk: triggerGetUsers,
     isLoading: isGetUsersLoading,
