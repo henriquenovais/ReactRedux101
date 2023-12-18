@@ -9,6 +9,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
   albumsApi,
   useCreateAlbumMutation,
+  useDeleteAlbumMutation,
   useGetAlbumsQuery,
 } from "./apis/albumsApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
@@ -50,4 +51,5 @@ export {
   addUser,
   useGetAlbumsQuery,
   useCreateAlbumMutation,
+  useDeleteAlbumMutation,
 };

@@ -21,10 +21,11 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteUser }) => {
   const {
     data: albums,
     error: getAlbumsError,
-    isLoading: isGetAlbumsLoading,
+    isFetching: isGetAlbumsFetching, //isFetching is for every single time the query is called
   } = useGetAlbumsQuery(data);
 
-  const [createAlbum] = useCreateAlbumMutation();
+  const [createAlbum, createAlbumResults] = useCreateAlbumMutation();
+  const { isLoading: isCreateAlbumLoading } = createAlbumResults; //isLoading is only for the first call of the query/mutation
 
   if (getAlbumsError) {
     console.error("Error happened during GetAlbumsQuery", getAlbumsError);
@@ -52,8 +53,10 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteUser }) => {
         text={"Add album"}
         coloring={ButtonColoring.PRIMARY}
         shape={ButtonShape.PILL}
-        icon={isGetAlbumsLoading ? <FaSpinner /> : <></>}
-        disabled={isGetAlbumsLoading}
+        icon={
+          isCreateAlbumLoading || isGetAlbumsFetching ? <FaSpinner /> : <></>
+        }
+        disabled={isCreateAlbumLoading || isGetAlbumsFetching}
       />
       <AlbumCollection data={albums} />
     </>
@@ -61,10 +64,9 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteUser }) => {
 
   return (
     <Accordion
-      id="something"
       header={header}
       content={
-        isGetAlbumsLoading || !albums ? <FaSpinner /> : generateContent(albums)
+        isGetAlbumsFetching || !albums ? <FaSpinner /> : generateContent(albums)
       }
     />
   );

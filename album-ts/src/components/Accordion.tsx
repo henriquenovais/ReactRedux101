@@ -4,14 +4,12 @@ import { FC, useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 interface IAccordion {
-  id: string;
   header: JSX.Element;
   content?: JSX.Element;
   headerClassName?: string;
 }
 
 const Accordion: FC<IAccordion> = ({
-  id,
   header,
   content,
   headerClassName = "",
@@ -35,12 +33,8 @@ const Accordion: FC<IAccordion> = ({
   return (
     <div className="gap-0 select-none border-2 border-gray-400">
       <div className="w-80 flex flex-col p-4">
-        <div key={id}>
-          <div
-            key={id}
-            className={headerStyle}
-            onClick={(event) => onClick(event)}
-          >
+        <div>
+          <div className={headerStyle} onClick={(event) => onClick(event)}>
             {content &&
               (expanded ? (
                 <GoChevronDown className="text-3xl" />

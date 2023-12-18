@@ -13,12 +13,15 @@ const albumsApi = createApi({
       return fetch(...args);
     },
   }),
-  tagTypes: ["Album"],
+  tagTypes: ["User", "Album"],
   endpoints: (builder) => {
     return {
       createAlbum: builder.mutation<AlbumData, User>({
-        invalidatesTags: (_, __, user) => {
-          return [{ type: "Album", id: user.id }];
+        // invalidatesTags: (_, __, user) => {
+        //   return [{ type: "Album", id: user.id }];
+        // },
+        invalidatesTags: (album, _, __) => {
+          return [{ type: "Album", id: album?.id }];
         },
         query: (user: User) => {
           return {
@@ -32,8 +35,11 @@ const albumsApi = createApi({
         },
       }),
       deleteAlbum: builder.mutation<AlbumData, AlbumData>({
+        // invalidatesTags: (_, __, album) => {
+        //   return [{ type: "Album", id: album.userId }];
+        // },
         invalidatesTags: (_, __, album) => {
-          return [{ type: "Album", id: album.userId }];
+          return [{ type: "Album", id: album.id }];
         },
         query: (album: AlbumData) => {
           return {
@@ -46,8 +52,18 @@ const albumsApi = createApi({
         },
       }),
       getAlbums: builder.query<AlbumData[], User>({
-        providesTags: (_, __, user) => {
-          return [{ type: "Album", id: user.id }];
+        // providesTags: (_, __, user) => {
+        //   return [{ type: "Album", id: user.id }];
+        // },
+        providesTags: (albums, __, user) => {
+          if (albums) {
+            const tags: Array<{ type: "User" | "Album"; id: string }> =
+              albums?.map((item) => ({ type: "Album", id: item.id }));
+
+            return [{ type: "User", id: user.id }, ...tags];
+          } else {
+            return [{ type: "User", id: user.id }];
+          }
         },
         query: (user: User) => {
           return {
@@ -66,4 +82,6 @@ const albumsApi = createApi({
 export const useGetAlbumsQuery = albumsApi.endpoints.getAlbums.useQuery;
 export const useCreateAlbumMutation =
   albumsApi.endpoints.createAlbum.useMutation;
+export const useDeleteAlbumMutation =
+  albumsApi.endpoints.deleteAlbum.useMutation;
 export { albumsApi };

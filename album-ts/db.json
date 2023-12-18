@@ -47,21 +47,6 @@
   ],
   "albums": [
     {
-      "id": "Aahuase2",
-      "title": "Candelario Pollich Album",
-      "userId": "xeJszmOQAPiB8_tI4XMfW"
-    },
-    {
-      "id": "Aahuase5555",
-      "title": "Candelario Pollich Second Album",
-      "userId": "xeJszmOQAPiB8_tI4XMfW"
-    },
-    {
-      "userId": "xeJszmOQAPiB8_tI4XMfW",
-      "title": "Oriental Steel Sausages",
-      "id": "O5sPPzU"
-    },
-    {
       "userId": "xeJszmOQAPiB8_tI4XMfW",
       "title": "Handcrafted Granite Soap",
       "id": "XksWkqi"
@@ -95,6 +80,26 @@
       "userId": "xeJszmOQAPiB8_tI4XMfW",
       "title": "Elegant Concrete Ball",
       "id": "rThV1U3"
+    },
+    {
+      "userId": "xeJszmOQAPiB8_tI4XMfW",
+      "title": "Oriental Steel Shoes",
+      "id": "B5aNdR1"
+    },
+    {
+      "userId": "xeJszmOQAPiB8_tI4XMfW",
+      "title": "Electronic Rubber Bacon",
+      "id": "SJO3-3m"
+    },
+    {
+      "userId": "xeJszmOQAPiB8_tI4XMfW",
+      "title": "Fantastic Plastic Salad",
+      "id": "S5C5jfU"
+    },
+    {
+      "userId": "xeJszmOQAPiB8_tI4XMfW",
+      "title": "Incredible Frozen Pants",
+      "id": "YgvWR38"
     }
   ],
   "photos": []
