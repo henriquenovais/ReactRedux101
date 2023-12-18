@@ -52,6 +52,8 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteUser }) => {
         text={"Add album"}
         coloring={ButtonColoring.PRIMARY}
         shape={ButtonShape.PILL}
+        icon={isGetAlbumsLoading ? <FaSpinner /> : <></>}
+        disabled={isGetAlbumsLoading}
       />
       <AlbumCollection data={albums} />
     </>
