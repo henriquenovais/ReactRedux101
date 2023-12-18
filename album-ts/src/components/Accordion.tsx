@@ -32,8 +32,6 @@ const Accordion: FC<IAccordion> = ({
     headerClassName
   );
 
-  // console.log("isContentEmpty() >>>>>>>>>>>>>>>>>>>>>", isContentEmpty());
-
   return (
     <div className="gap-0 select-none border-2 border-gray-400">
       <div className="w-80 flex flex-col p-4">

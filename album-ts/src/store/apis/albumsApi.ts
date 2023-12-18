@@ -8,9 +8,8 @@ const albumsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3005",
     fetchFn: async (...args) => {
-      console.log("here");
       await pause(5000);
-      console.log("here 2");
+
       return fetch(...args);
     },
   }),
@@ -23,7 +22,7 @@ const albumsApi = createApi({
             method: "POST",
             body: {
               userId: user.id,
-              tile: faker.commerce.productName(),
+              title: faker.commerce.productName(),
             },
           };
         },

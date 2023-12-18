@@ -9,9 +9,9 @@ interface IAlbumCollection {
 const AlbumCollection: FC<IAlbumCollection> = ({ data }) => {
   return (
     <>
-      {data.map((item) => {
-        return <div key={item.id}>{item.title}</div>;
-      })}
+      {data.map((item) => (
+        <div key={item.id}>{item.title}</div>
+      ))}
     </>
   );
 };
