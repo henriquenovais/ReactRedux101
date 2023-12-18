@@ -21,7 +21,7 @@ const UserInformation: FC<IUserInformation> = ({ data, deleteUser }) => {
   const {
     data: albums,
     error: getAlbumsError,
-    isFetching: isGetAlbumsFetching, //isFetching is for every single time the query is called
+    isFetching: isGetAlbumsFetching, //isFetching is for every single time the query is called and isLoading is only for the first call of the query/mutation
   } = useGetAlbumsQuery(data);
 
   const [createAlbum, createAlbumResults] = useCreateAlbumMutation();
