@@ -31,7 +31,7 @@ const AlbumCollection: FC<IAlbumCollection> = ({ data }) => {
   );
 
   const generateContent = (album: AlbumData): JSX.Element => (
-    <PhotosCollection />
+    <PhotosCollection album={album} />
   );
 
   return (

@@ -32,7 +32,7 @@ const Accordion: FC<IAccordion> = ({
 
   return (
     <div className="gap-0 select-none border-2 border-gray-400">
-      <div className="w-80 flex flex-col p-4">
+      <div className="w-full flex flex-col p-4">
         <div>
           <div className={headerStyle} onClick={(event) => onClick(event)}>
             {content &&
@@ -46,7 +46,7 @@ const Accordion: FC<IAccordion> = ({
         </div>
       </div>
       {expanded && (
-        <div className="w-80 flex flex-col p-4 border-t-2 border-gray-400">
+        <div className="w-full flex flex-col p-4 border-t-2 border-gray-400">
           {content}
         </div>
       )}

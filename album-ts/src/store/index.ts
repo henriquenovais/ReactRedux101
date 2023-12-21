@@ -16,14 +16,23 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { getUsers } from "./thunks/fetchUsers";
 import { deleteUser } from "./thunks/deleteUser";
 import { addUser } from "./thunks/addUser";
+import {
+  photosApi,
+  useAddPhotoMutation,
+  useDeletePhotoMutation,
+  useGetPhotosQuery,
+} from "./apis/photosApi";
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
     [albumsApi.reducerPath]: albumsApi.reducer,
+    [photosApi.reducerPath]: photosApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(albumsApi.middleware);
+    return getDefaultMiddleware()
+      .concat(albumsApi.middleware)
+      .concat(photosApi.middleware);
   },
 });
 
@@ -52,4 +61,7 @@ export {
   useGetAlbumsQuery,
   useCreateAlbumMutation,
   useDeleteAlbumMutation,
+  useGetPhotosQuery,
+  useAddPhotoMutation,
+  useDeletePhotoMutation,
 };

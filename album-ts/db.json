@@ -137,5 +137,21 @@
       "id": "DiDSSee"
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": "XksWkqi",
+      "url": "https://loremflickr.com/150/150?lock=8720131286892544",
+      "id": 1
+    },
+    {
+      "albumId": "XksWkqi",
+      "url": "https://loremflickr.com/150/150?lock=5843977307684864",
+      "id": 3
+    },
+    {
+      "albumId": "XksWkqi",
+      "url": "https://picsum.photos/seed/uy4j4/150/150",
+      "id": 4
+    }
+  ]
 }
