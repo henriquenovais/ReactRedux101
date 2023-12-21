@@ -7,6 +7,7 @@ import { GoTrash } from "react-icons/go";
 import { ButtonColoring, ButtonShape } from "../constants/enums/button";
 import Accordion from "./Accordion";
 import { FaSpinner } from "react-icons/fa";
+import PhotosCollection from "./PhotosCollection";
 
 interface IAlbumCollection {
   data: AlbumData[];
@@ -29,23 +30,9 @@ const AlbumCollection: FC<IAlbumCollection> = ({ data }) => {
     </div>
   );
 
-  // const generateContent = (albums: AlbumData[]): JSX.Element => (
-  //   <>
-  //     <Button
-  //       onClick={() => {
-  //         createAlbum(data);
-  //       }}
-  //       text={"Add album"}
-  //       coloring={ButtonColoring.PRIMARY}
-  //       shape={ButtonShape.PILL}
-  //       icon={
-  //         isCreateAlbumLoading || isGetAlbumsLoading ? <FaSpinner /> : <></>
-  //       }
-  //       disabled={isCreateAlbumLoading || isGetAlbumsLoading}
-  //     />
-  //     <AlbumCollection data={albums} />
-  //   </>
-  // );
+  const generateContent = (album: AlbumData): JSX.Element => (
+    <PhotosCollection />
+  );
 
   return (
     <div className="flex flex-col gap-4">
@@ -53,7 +40,11 @@ const AlbumCollection: FC<IAlbumCollection> = ({ data }) => {
         <FaSpinner />
       ) : (
         data.map((item) => (
-          <Accordion key={item.id} header={generateHeader(item)} />
+          <Accordion
+            key={item.id}
+            header={generateHeader(item)}
+            content={generateContent(item)}
+          />
         ))
       )}
     </div>
