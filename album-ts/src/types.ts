@@ -8,3 +8,9 @@ export interface AlbumData {
   title: string;
   userId: string;
 }
+
+export interface PhotoData {
+  id: string;
+  url: string;
+  albumId: string;
+}
