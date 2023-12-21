@@ -20,8 +20,8 @@ const albumsApi = createApi({
         // invalidatesTags: (_, __, user) => {
         //   return [{ type: "Album", id: user.id }];
         // },
-        invalidatesTags: (album, _, __) => {
-          return [{ type: "Album", id: album?.id }];
+        invalidatesTags: (_, __, user) => {
+          return [{ type: "User", id: user.id }];
         },
         query: (user: User) => {
           return {
